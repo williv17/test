@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const {engine} = require("express-handlebars");
 
 if(process.env.NODE_ENV === 'development') {
   require("dotenv").config();
@@ -18,8 +19,29 @@ const registerRouter = require('./routes/register');
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, '../frontend/screens'));
-app.set('view engine', 'pug');
+var cons = require('consolidate');
+
+// view engine setup
+// app.engine('html', cons.swig)
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'html');
+
+app.engine(
+  'handlebars',
+  engine({
+      layoutsDir: path.join(__dirname, "views/layout"), //where to look for layouts
+      partialsDir: path.join(__dirname, "views/partials"), 
+      extname: ".handlebars", //expected file extension for handlebars files
+      defaultLayout: "home", //default layout for app, general template for all pages in app
+    
+  })
+);
+
+app.set("views", path.join(__dirname, 'views'));
+app.set("view engine", "handlebars");
+
+
+//app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());

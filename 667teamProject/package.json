@@ -10,16 +10,21 @@
     "db:rollback": "npx sequelize db:migrate:undo"
   },
   "dependencies": {
+    "bootstrap": "^5.2.2",
+    "consolidate": "^0.16.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.0.3",
     "express": "~4.16.1",
+    "express-handlebars": "^6.0.6",
+    "handlebars": "^4.7.7",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "pg-promise": "^10.14.0",
     "pug": "^3.0.2",
     "sequelize": "^6.25.6",
-    "sequelize-cli": "^6.5.2"
+    "sequelize-cli": "^6.5.2",
+    "swig": "^1.4.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
