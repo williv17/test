@@ -6,13 +6,13 @@ router.get('/:id', function(request, response, next) {
   const {id} = request.params; 
 
 
-  response.render("private_screens/game", { id});
+  response.render("private_views/game", { id});
 });
 router.get('/:id/:message', function(request, response, next) {
   const {id, message} = request.params; 
 
 
-  response.render('private_screens/game', { id, message });
+  response.render('private_views/game', { id, message });
 });
 
 

@@ -21,23 +21,18 @@ const app = express();
 // view engine setup
 var cons = require('consolidate');
 
-// view engine setup
-// app.engine('html', cons.swig)
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'html');
-
 app.engine(
   'handlebars',
   engine({
-      layoutsDir: path.join(__dirname, "views/layout"), //where to look for layouts
-      partialsDir: path.join(__dirname, "views/partials"), 
+      layoutsDir: path.join(__dirname, "../frontend/views/layout"), //where to look for layouts
+      partialsDir: path.join(__dirname, "../frontend/views/partials"), 
       extname: ".handlebars", //expected file extension for handlebars files
       defaultLayout: "home", //default layout for app, general template for all pages in app
     
   })
 );
 
-app.set("views", path.join(__dirname, 'views'));
+app.set("views", path.join(__dirname, '../frontend/views'));
 app.set("view engine", "handlebars");
 
 
