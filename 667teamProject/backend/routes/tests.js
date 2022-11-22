@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const db = require('../../db'); //import db/index.js
+const db = require('../db/server'); //import db/index.js
 
 router.get("/", (request, response) => {
   db.any(

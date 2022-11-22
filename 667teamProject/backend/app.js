@@ -8,17 +8,17 @@ if(process.env.NODE_ENV === 'development') {
   require("dotenv").config();
 }
 
-const indexRouter = require('./routes/pageRoutes/index');
-const gamesRouter = require('./routes/pageRoutes/games');
-const lobbyRouter = require('./routes/pageRoutes/lobby');
-const testsRouter = require('./routes/pageRoutes/tests');
-const rulesRouter = require('./routes/pageRoutes/rules');
-const registerRouter = require('./routes/pageRoutes/register');
+const indexRouter = require('./routes/index');
+const gamesRouter = require('./routes/games');
+const lobbyRouter = require('./routes/lobby');
+const testsRouter = require('./routes/tests');
+const rulesRouter = require('./routes/rules');
+const registerRouter = require('./routes/register');
 
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '../frontend/screens'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));

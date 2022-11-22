@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./bin/www",
+    "start": "node ./backend/bin/www",
+    "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./backend/bin/www",
     "db:create:migration": "npx sequelize migration:generate --name ",
     "db:migrate": "npx sequelize db:migrate",
     "db:rollback": "npx sequelize db:migrate:undo"

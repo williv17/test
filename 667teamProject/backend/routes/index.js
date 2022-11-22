@@ -4,21 +4,21 @@ var router = express.Router();
 /* GET home page. */
 
 router.get('/', function(request, response, next) {
-  response.render("public/index",  { error: false });
+  response.render("public_screens/index",  { error: false });
 });
 
 
 router.get('/login', function(request, response, next) {
-  response.render("public/login");
+  response.render('public_screens/login');
 });
 
 router.get('/register', function(request, response, next) {
-  response.render("public/register");
+  response.render('public_screens/register');
 });
 
 
 router.get('/rules', function(request, response, next) {
-  response.render("public/rules");
+  response.render('public_screens/rules');
 });
 
 module.exports = router;
