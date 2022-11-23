@@ -15,6 +15,7 @@ const lobbyRouter = require('./routes/pageRoutes/lobby');
 const testsRouter = require('./routes/pageRoutes/tests');
 const rulesRouter = require('./routes/pageRoutes/rules');
 const registerRouter = require('./routes/pageRoutes/register');
+// const userRouter = require('./routes/pageRoutes/users');
 const app = express();
 
 // view engine setup
@@ -49,6 +50,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+// app.use('/users,', userRouter); 
 app.use('/games', gamesRouter);
 app.use('/tests', testsRouter);
 app.use('/lobby', lobbyRouter);
