@@ -10,14 +10,18 @@ router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
 /* Login user */
-router.post('/register', function (req, res, next) {
-  const username = req.body.username;
-  let regResult = register(username, req.body.password);
-  if (regResult) {
-    res.render('/users', { username: username });
-  } else {
-    res.render('/index', { error: true });
+router.post('/register', jsonBodyParser, (req, res, next) => {
+  const { name, email, password } = req.body.username;
+
+  for (const field of ['name', 'email', 'password']) {
+    if (!req.body[field])
+      return res.status(400).json({
+        error: `Missing '${field}' in request body`,
+      });
   }
+  const passwordError = UsersService.validatePassword(password);
+  if (passwordError) return res.status(400).json({ error: passwordError });
+  
 });
 
 router.post('/login', jsonBodyParser, (req, res, next) => {
