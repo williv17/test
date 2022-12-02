@@ -1,46 +1,33 @@
-const fs = require('fs');
-const path = require('path');
 const Sequelize = require('sequelize');
 const envConfigs = require('../config/config');
+let sequelize = null;
 
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = envConfigs[env];
-const db = {};
 
-let sequelize;
-if (config.url) {
-  sequelize = new Sequelize(config.url, config);
-} else {
-  sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    config
-  );
-}
-
-fs.readdirSync(__dirname)
-  .filter((file) => {
-    if(file !== basename) return;
-      return (
-        file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
-      );
-  })
-  .forEach((file) => {
-    if(file !== 'index.js'){
-      const model = require(path.join(__dirname, file))(sequelize);
-      db[model.name] = model;
-    }
-  });
-
-Object.keys(db).forEach((modelName) => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
+exports.Connect = () => {
+  if (sequelize === null) {
+    sequelize = new Sequelize(envConfigs.development.url, {
+      dialect: 'postgres',
+    });
   }
-});
 
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
+  console.log('Environment: ' + process.env.NODE_ENV);
+  sequelize
+    .authenticate()
+    .then(() => {
+      console.log('Connection to database successfull');
+    })
+    .catch((err) => {
+      console.log('Unable to connect to the database', err);
+    });
 
-module.exports = db;
+  const DB = {
+    USER: require('../models/user')(sequelize, Sequelize),
+    GAME: require('../models/game')(sequelize, Sequelize),
+    GAME_USER: require('../models/game_user')(sequelize, Sequelize),
+    GAME_CARD: require('../models/game_card')(sequelize, Sequelize),
+    CARD: require('../models/card')(sequelize, Sequelize),
+    sequelize,
+    Sequelize,
+  };
+  return DB;
+};

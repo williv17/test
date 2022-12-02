@@ -2,33 +2,33 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('game_stats', {
-      stat_id: {
+    await queryInterface.createTable('Cards', {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
-      user_id: {
-        type: Sequelize.INTEGER,
+      value: {
+        type: Sequelize.INTEGER
       },
-      wins: {
-        type: Sequelize.INTEGER,
+      createdAT: {
+        type: Sequelize.DATE
       },
-      losses: {
-        type: Sequelize.INTEGER,
+      updatedAt: {
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-      },
+        type: Sequelize.DATE
+      }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('game_stats');
+    await queryInterface.dropTable('Cards');
   }
 };

@@ -1,33 +1,61 @@
 const path = require('path');
-const models = require('../models');
+const Database = require('../models');
+const db = Database.Connect();
+const User = db.USER;
+const UserService = require('../services/user-service');
+const AuthService = require('../services/auth/auth-service.js');
 
-const UsersService = require(path.join(__dirname, '../services/user-service'));
+const registerUser = async (req, res, next) => {
+  const { password, username, email } = req.body;
+    for (const field of ['email', 'username', 'password'])
+      if (!req.body[field])
+        return res.status(400).json({
+          error: `Missing '${field}' in request body`,
+      });
 
-const registerUser = async (req, res) => {
-  console.log(typeof models.User);
-  try {
-    const newUser = await models.User.create(req.body);
-    return res.status(201).json({ 
-      newUser,
-     });
-    // if (hasUserWithUserName)
-    //   return res.status(400).json({ error: 'Username already taken' });
+    const passwordError = AuthService.validatePassword(password);
 
-    // const hashedPassword = await UsersService.hashPassword(password);
+    if (passwordError)
+      return res.status(400).json({ error: passwordError });
 
-    // const newUser = {
-    //   name,
-    //   email,
-    //   password: hashedPassword,
-    // };
+    UserService.getUserWithUserName(req.app.get('db'), username)
+      .then((hasUserWithUserName) => {
+        if (hasUserWithUserName)
+          return res.status(400).json({ error: 'Username already taken' });
 
-    // const user = await UsersService.insertUser(req.app.get('db'), newUser);
-
-    // res.status(201).json(UsersService.serializeUser(user));
-  } catch (error) {
-    return res.status(500).json({ error: error.message });
-  }
+        return UserService.hashPassword(password).then((hashedPassword) => {
+          const newUser = {
+            username,
+            password: hashedPassword,
+            email,
+          };
+          
+          return UserService.insertUser(req.app.get('db'), newUser).then(
+            (user) => {
+              if (user) {
+                let token = AuthService.createJwt(user.username, {
+                  user_id: user.id,
+                });
+                console.log('user', JSON.stringify(user, null, 2));
+                console.log(token);
+                return res
+                  .cookie('jwt', token, {
+                    httpOnly: true,
+                    path: '/',
+                  })
+                  .status(201)
+                  .send(user);
+              } else {
+                return res.status(400).json({ error: 'Something went wrong' });
+              }
+            }
+          );
+        });
+      })
+      .catch(next);
 };
+
+
 
 const test = async (req, res, next) => {
   console.log('test');

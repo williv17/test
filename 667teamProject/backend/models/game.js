@@ -1,24 +1,17 @@
 'use strict';
-
-const { Model, DataTypes } = require('sequelize');
-
-module.exports = function(sequelize) {
-  class Game_Card extends Model {
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Game extends Model {
     static associate(models) {
-      game.hasMany(models.Game_User, {
-        foreignKey: 'user_id'
-    });
+      Game.hasMany(models.Game_User, {
+        foreignKey: 'user_id',
+      });
     }
   }
-
-  Game_Card.init(
+  Game.init(
     {
-      game_id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: DataTypes.STRING,
-      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
@@ -27,14 +20,11 @@ module.exports = function(sequelize) {
         allowNull: false,
         type: DataTypes.DATE,
       },
-      deletedAt: {
-        type: DataTypes.DATE,
-      },
     },
     {
       sequelize,
-      name: 'Game',
-      timestamps: true,
+      modelName: 'Game',
     }
   );
+  return Game;
 };

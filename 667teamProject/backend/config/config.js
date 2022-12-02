@@ -13,4 +13,6 @@ module.exports = {
     url: process.env.DATABASE_URL,
     dialect: 'postgres',
   },
+  JWT_SECRET: process.env.JWT_SECRET || 'csc667',
+  JWT_EXPIRY: process.env.JWT_EXPIRY || '3h',
 };

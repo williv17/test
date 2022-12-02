@@ -1,24 +1,15 @@
 const xss = require('xss');
 const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/;
 const bcrypt = require('bcryptjs');
-const Database = require('../db/server');
 
-const DB = Database.Connect();
 
 const UsersService = {
-  hasUserWithEmail(db, user_name) {
-    return db('users')
-      .where({ user_name })
-      .first()
-      .then((user) => !!user);
+  getUserWithUserName(db, username) {
+    return db.USER.findOne({ where: { username } });
   },
 
   insertUser(db, newUser) {
-    return db
-      .insert(newUser)
-      .into('users')
-      .returning('*')
-      .then(([user]) => user);
+    return db.USER.create(newUser);
   },
 
   hashPassword(password) {
@@ -44,7 +35,9 @@ const UsersService = {
   serializeUser(user) {
     return {
       id: user.id,
-      user_name: xss(user.user_name),
+      username: xss(user.username),
+      password: xss(user.password),
+      email: xss(user.email),
     };
   },
 };

@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('game_cards', {
+    await queryInterface.createTable('Game_Cards', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,10 +10,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       game_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       card_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       discarded: {
         type: Sequelize.BOOLEAN
@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       user_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       order_id: {
         type: Sequelize.INTEGER
@@ -38,6 +38,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('game_cards');
+    await queryInterface.dropTable('Game_Cards');
   }
 };

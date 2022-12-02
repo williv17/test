@@ -1,20 +1,15 @@
 'use strict';
-
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Game_Stat extends Model {
     static associate(models) {
       Game_Stat.belongsTo(models.Game_User);
     }
   }
-
   Game_Stat.init(
     {
-      stat_id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: DataTypes.INTEGER,
-      },
       user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -25,22 +20,11 @@ module.exports = (sequelize, DataTypes) => {
       losses: {
         type: DataTypes.INTEGER,
       },
-      createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      deletedAt: {
-        type: DataTypes.DATE,
-      },
     },
     {
       sequelize,
-      name: 'Game_Stat',
-      timestamps: true,
+      modelName: 'Game_Stat',
     }
   );
+  return Game_Stat;
 };

@@ -7,8 +7,7 @@
     "db:migrate": "npx sequelize db:migrate",
     "db:rollback": "npx sequelize db:migrate:undo",
     "db:seed": "npx sequelize db:seed:all",
-    "build": "babel ./backend/bin/www -d ./dist",
-    "start:dev": "npm run build && NODE_ENV=development DEBUG=APP_NAME:* nodemon ./backend/bin/www"
+    "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./backend/bin/www"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -21,6 +20,7 @@
     "express-handlebars": "^6.0.6",
     "handlebars": "^4.7.7",
     "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.1",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",

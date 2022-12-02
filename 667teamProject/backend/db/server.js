@@ -24,13 +24,13 @@ exports.Connect = () => {
     });
   
   const DB = {
-    USER: require('../models/User'),
-    GAME: require('../models/Game'),
+    USER: require('../models/user2'),
+    GAME: require('../models/game2'),
     GAME: require('../models/Game-Card'),
     GAME: require('../models/Game-Stat'),
     GAME: require('../models/Game-User'),
-    GAME: require('../models/Message'),
-    GAME: require('../models/Game'),
+    GAME: require('../models/1'),
+    GAME: require('../models/game2'),
     SEQUELIZE: Sequelize,
   };
 
