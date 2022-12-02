@@ -1,27 +1,23 @@
 var express = require('express');
-var router = express.Router();
+const mainRouter = express.Router();
+
+const controllerRouter = require('../controllers/index.js');
+const registerRouter = require('./register.js');
+const loginRouter = require('./login.js');
+const rulesRouter = require('./rules.js');
 
 /* GET home page. */
 
-router.get('/', function(request, response, next) {
-  response.render("public_views/index",  { error: false });
+mainRouter.get('/', function (request, response, next) {
+  response.render('public_views/index', { error: false });
 });
 
+mainRouter.use('/register', registerRouter);
+mainRouter.use('/login', loginRouter);
+mainRouter.use('/rules', rulesRouter);
+mainRouter.use('/api', controllerRouter);
 
-router.get('/login', function(request, response, next) {
-  response.render('public_views/login');
-});
-
-router.get('/register', function(request, response, next) {
-  response.render('public_views/register');
-});
-
-
-router.get('/rules', function(request, response, next) {
-  response.render('public_views/rules');
-});
-
-module.exports = router;
+module.exports = mainRouter;
 
 
 

@@ -1,19 +1,15 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  const Card = sequelize.define(
-    'card',
-    {
-      card_id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
+  const Card = sequelize.define('card', {
+    card_id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
       },
       value: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       createdAt: {
@@ -29,16 +25,16 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
+      sequelize,
       timestamps: true,
-      paranoid: true,
     }
   );
 
-  Card.associate = function (models) {
+  Card.associate = (models) => {
     Card.hasOne(models.Game_Card, {
-      foreignKey: 'card_id'
-    });
-  };
+      foreignKey: 'card_id',
+    }
+  )};
 
-  return Message;
+  return Card;
 };

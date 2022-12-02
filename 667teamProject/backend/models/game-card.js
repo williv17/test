@@ -1,12 +1,8 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  const Game_Card = sequelize.define(
-    'game_card',
-    {
-      id: {
+  const Game_Card = sequelize.define('game_card', {
+    id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -43,15 +39,15 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
+      sequelize,
       timestamps: true,
-      paranoid: true,
     }
   );
 
-  Game_Card.associate = function(models) {
+  Game_Card.associate = (models) => {
     Game_Card.belongsTo(models.Card);
     Game_Card.belongsTo(models.Game_User);
-    Game_Card.belongsTo(models.Game)
+    Game_Card.belongsTo(models.Game);
   };
 
   return Game_Card;

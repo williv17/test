@@ -1,9 +1,8 @@
 var express = require('express');
-var router = express.Router();
+var rulesRouter = express.Router();
 
-/* GET home page. */
-router.get('/rules', function(request, response, next) {
-  response.render("public/rules");
+rulesRouter.get('/', function(request, response, next) {
+  response.render('public_views/rules');
 });
 
-module.exports = router;
+module.exports = rulesRouter;

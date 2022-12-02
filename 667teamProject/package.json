@@ -3,13 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./backend/bin/www",
-    "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./backend/bin/www",
     "db:create:migration": "npx sequelize migration:generate --name",
     "db:migrate": "npx sequelize db:migrate",
-    "db:rollback": "npx sequelize db:migrate:undo"
+    "db:rollback": "npx sequelize db:migrate:undo",
+    "db:seed": "npx sequelize db:seed:all",
+    "build": "babel ./backend/bin/www -d ./dist",
+    "start:dev": "npm run build && NODE_ENV=development DEBUG=APP_NAME:* nodemon ./backend/bin/www"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.2",
     "consolidate": "^0.16.0",
     "cookie-parser": "~1.4.4",
@@ -26,9 +28,15 @@
     "pug": "^3.0.2",
     "sequelize": "^6.25.8",
     "sequelize-cli": "^6.5.2",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "xss": "^1.0.14"
   },
   "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/node": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/register": "^7.18.9",
     "nodemon": "^2.0.20"
   },
   "optionalDependencies": {

@@ -1,10 +1,13 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  const Game_Stat = sequelize.define(
-    'game_stat',
+  class Game_Stat extends Model {
+    static associate(models) {
+      Game_Stat.belongsTo(models.Game_User);
+    }
+  }
+
+  Game_Stat.init(
     {
       stat_id: {
         allowNull: false,
@@ -35,14 +38,9 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
+      sequelize,
+      name: 'Game_Stat',
       timestamps: true,
-      paranoid: true,
     }
   );
-
-  Game_Stat.associate = function (models) {
-    Game_Stat.belongsTo(models.Game_User);
-  };
-
-  return Game_Stat;
 };

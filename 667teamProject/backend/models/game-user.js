@@ -1,10 +1,21 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  const Game_User = sequelize.define(
-    'game_user',
+
+const { Model, DataTypes } = require('sequelize');
+
+module.exports = function(sequelize) {
+  class Game_User extends Model {
+    static associate(models) {
+    Game_User.hasMany(models.Game_Card, {
+      foreignKey: 'game_user_id'
+    });
+
+    Game_User.hasOne(models.Game_Stat, {
+      foreignKey: 'game_user_id'
+    });    
+    }
+  }
+
+  Game_User.init(
     {
       game_user_id: {
         allowNull: false,
@@ -36,20 +47,9 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
+      sequelize,
+      name: 'Game_User',
       timestamps: true,
-      paranoid: true,
     }
   );
-
-  Game_User.associate = function (models) {
-    Game_User.hasMany(models.Game_Card, {
-      foreignKey: 'game_user_id'
-    });
-
-    Game_User.hasOne(models.Game_Stat, {
-      foreignKey: 'game_user_id'
-    });
-  };
-
-  return Game_User;
 };

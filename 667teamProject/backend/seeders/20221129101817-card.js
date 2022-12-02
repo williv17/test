@@ -3,23 +3,663 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+    await queryInterface.bulkInsert(
+      'cards',
+      [
+        {
+          color: 'red',
+          value: 0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 8,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 'skip',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 'reverse',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 'draw 2',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 'skip',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 'reverse',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 'draw 2',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 'skip',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 'reverse',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 'draw 2',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 'skip',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 'reverse',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 'draw 2',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 'skip',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 'reverse',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'red',
+          value: 'draw 2',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 'skip',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 'reverse',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'yellow',
+          value: 'draw 2',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 'skip',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 'reverse',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'blue',
+          value: 'draw 2',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 'skip',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 'reverse',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'green',
+          value: 'draw 2',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'black',
+          value: 'draw 4',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'black',
+          value: 'draw 4',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'black',
+          value: 'draw 4',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'black',
+          value: 'draw 4',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'black',
+          value: 'wild',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'black',
+          value: 'wild',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'black',
+          value: 'wild',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          color: 'black',
+          value: 'wild',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {}
+    );
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete('cards', null, {});
   }
 };

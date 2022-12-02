@@ -6,7 +6,7 @@ const Database = require('../db/server');
 const DB = Database.Connect();
 
 const UsersService = {
-  hasUserWithUserName(db, user_name) {
+  hasUserWithEmail(db, user_name) {
     return db('users')
       .where({ user_name })
       .first()

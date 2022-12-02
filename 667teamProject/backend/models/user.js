@@ -9,12 +9,22 @@ const secrets = [
   'deletedAt',
 ];
 
-const {
-  Model, Sequelize
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
-    'user',
+const { Model, DataTypes } = require('sequelize');
+
+module.exports = function(sequelize) {
+  class User extends Model {
+    static associate(models) {
+    User.hasMany(models.Message, {
+      foreignKey: 'user_id',
+    });
+
+    User.hasOne(models.Game_User, {
+      foreignKey: 'user_id',
+    });
+    }
+  }
+
+  User.init(
     {
       user_id: {
         allowNull: false,
@@ -26,18 +36,21 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-      },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      authToken: {
+      email: {
         type: DataTypes.STRING,
-        defaultValue: '',
+        allowNull: false,
+      },
+      emailVerificationToken: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      status: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
@@ -52,6 +65,8 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
+      sequelize,
+      name: 'User',
       timestamps: true,
       paranoid: true,
     }
@@ -66,16 +81,4 @@ module.exports = (sequelize, DataTypes) => {
     }
     return clean;
   };
-
-  User.associate = function (models) {
-    User.hasMany(models.Message, {
-      foreignKey: 'user_id'
-    });
-
-    User.hasOne(models.Game_User, {
-      foreignKey: 'user_id'
-    });
-  };
-
-  return User;
 };

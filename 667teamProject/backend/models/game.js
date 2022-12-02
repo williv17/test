@@ -1,16 +1,23 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  const Game = sequelize.define(
-    'game',
+
+const { Model, DataTypes } = require('sequelize');
+
+module.exports = function(sequelize) {
+  class Game_Card extends Model {
+    static associate(models) {
+      game.hasMany(models.Game_User, {
+        foreignKey: 'user_id'
+    });
+    }
+  }
+
+  Game_Card.init(
     {
       game_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
       },
       createdAt: {
         allowNull: false,
@@ -25,16 +32,9 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
+      sequelize,
+      name: 'Game',
       timestamps: true,
-      paranoid: true,
     }
   );
-
-  Game.associate = function (models) {
-    Game.hasMany(models.Game_User, {
-      foreignKey: 'user_id'
-    });
-  };
-
-  return Game;
 };

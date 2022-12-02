@@ -1,9 +1,15 @@
 'use strict';
 
-const { Model, Sequelize } = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  const Message = sequelize.define(
-    'message',
+const { Model, DataTypes } = require('sequelize');
+
+module.exports = function(sequelize) {
+  class Message extends Model {
+    static associate(models) {
+      message.belongsTo(models.User)
+    }
+  }
+
+  Message.init(
     {
       id: {
         allowNull: false,
@@ -36,14 +42,10 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
+      sequelize,
+      name: 'Message',
       timestamps: true,
       paranoid: true,
     }
   );
-
-  Message.associate = function (models) {
-    Message.belongsTo(models.User)
-  };
-
-  return Message;
 };
