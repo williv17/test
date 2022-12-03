@@ -14,6 +14,7 @@ mainRouter.get('/', function (request, response, next) {
 
 mainRouter.use('/register', registerRouter);
 mainRouter.use('/login', loginRouter);
+
 mainRouter.use('/rules', rulesRouter);
 mainRouter.use('/api', controllerRouter);
 

@@ -1,0 +1,39 @@
+{{!-- <script src="/javascripts/_pusher.js" defer="defer"></script>
+<script src="/javascripts/chat.js" defer="defer"></script>
+<script src="/javascripts/userDashboard.js" defer="defer"></script> --}}
+<head> 
+  <title></title>
+</head>
+<input type="hidden" id="roomId" name="roomId" value="lobby"/>
+<div class="maindiv">
+  <div class="button-container">
+    <div class="maintitle">
+      <div class="create-game-btn btn bg-success" id="new-game-btn">Create Game </div>
+    </div>
+  </div>
+  <div class="line mb-3"></div>
+  <div class="row"> 
+    <div class="col-sm-12 col-md-9">
+      <div class="alert alert-danger" role="alert" id="no-active-games-alert" hidden="hidden">No active games found, click "Create Game" to start a new one.</div>
+      <div class="row row-cols-1 row-cols-md-4 g-2" id="active-games"></div>
+    </div>
+    <div class="col-sm-12 col-md-3">
+      <div class="card bg-dark text-white"> 
+        <div class="card-body">
+          <div class="chatroom-title-container">
+            <div class="chatroom-title">Global Chat</div>
+          </div>
+          <div class="chatbox"></div>
+          <div class="messagebox">
+            <form>
+              <div class="input-group">
+                <input class="form-control" id="userInput" type="text"/>
+                <button class="btn bg-success" id="chatbox-btn" type="submit"><i class="fa fa-paper-plane"></i></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
