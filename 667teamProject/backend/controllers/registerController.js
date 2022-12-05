@@ -6,6 +6,7 @@ const UserService = require('../services/user-service');
 const AuthService = require('../services/auth/auth-service.js');
 
 const registerUser = async (req, res, next) => {
+  console.log(JSON.stringify(req.body));
   const { password, username, email } = req.body;
     for (const field of ['email', 'username', 'password'])
       if (!req.body[field])
