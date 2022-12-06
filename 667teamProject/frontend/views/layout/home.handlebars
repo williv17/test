@@ -20,18 +20,21 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <title>Uno Game Team RYWL</title>
 </head>
-<!---Header starts--->
-<header id="head">
 
-</header>
-{{> nav }}
+<body>
 
-<!---Body starts--->
+  <header>
+    {{#if user}}
+    {{> user_nav }}
+    {{else}}
+    {{> nav }}
+    {{/if}}
+  </header>
 
-<body class="paperOverlay bg-black">
-  {{{body}}}
-  {{> footer }}
+  <main>
+    {{{body}}}
+  </main>
 
+  {{> footer}}
 </body>
-
 </html>
