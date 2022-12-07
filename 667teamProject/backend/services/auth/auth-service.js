@@ -1,49 +1,56 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('../../config/config');
-const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/;
+const { JWT_EXPIRES_IN, JWT_SECRET } = require('../../config/config');
 
 const AuthService = {
-  getUserWithUserName(db, username) {
-    return db.USER.findOne({ where: { username } });
-  },
-
   comparePasswords(password, hash) {
     return bcrypt.compare(password, hash);
   },
 
-  createJwt(subject, payload) {
-    return jwt.sign(payload, config.JWT_SECRET, {
-      subject,
+  createJwt(payload) {
+    return jwt.sign(payload, JWT_SECRET, {
       algorithm: 'HS256',
-      expiresIn: config.JWT_EXPIRY,
+      expiresIn: 1000 * 60 * 60 * 24 * 7,
     });
   },
 
-  // verifyJwt(token) {
-  //   return jwt.verify(token, config.JWT_SECRET, {
-  //     algorithms: ['HS256'],
-  //   });
-  // },
+  verifyJwt(token) {
+    return jwt.verify(token, JWT_SECRET, {
+      algorithms: ['HS256'],
+    });
+  },
 
   parseBasicToken(token) {
     return Buffer.from(token, 'base64').toString().split(':');
   },
 
-  validatePassword(password) {
-    if (password.length < 8) {
-      return 'Password must be longer than 8 characters';
+  requireAuth(req, res, next) {
+    const authToken = req.get('Authorization') || '';
+    const bearerToken = authToken.slice(7, authToken.length);
+
+    if (!bearerToken) {
+      return res.status(401).json({ error: 'Missing bearer token' });
     }
-    if (password.length > 72) {
-      return 'Password must be less than 72 characters';
+
+    try {
+      const payload = verifyJwt(bearerToken);
+      const id = payload.sub;
+
+      User.findById;
+      User.findOne({ where: { id } })
+        .then((user) => {
+          if (!user)
+            return res.render('error', { error: 'Unauthorized request' });
+          req.user = user;
+          next();
+        })
+        .catch((err) => {
+          console.error(err);
+          next(err);
+        });
+    } catch (error) {
+      res.render('error', { error: 'Unauthorized request' });
     }
-    if (password.startsWith(' ') || password.endsWith(' ')) {
-      return 'Password must not start or end with empty spaces';
-    }
-    if (!REGEX_UPPER_LOWER_NUMBER_SPECIAL.test(password)) {
-      return 'Password must contain 1 upper case, lower case, and a number';
-    }
-    return null;
   },
 };
 

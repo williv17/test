@@ -14,5 +14,5 @@ module.exports = {
     dialect: 'postgres',
   },
   JWT_SECRET: process.env.JWT_SECRET || 'csc667',
-  JWT_EXPIRY: process.env.JWT_EXPIRY || '3h',
+  JWT_EXPIRY: process.env.JWT_EXPIRY || '604800000',
 };

@@ -10,6 +10,7 @@
     "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./backend/bin/www"
   },
   "dependencies": {
+    "asyncbars": "^0.2.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.2",
     "consolidate": "^0.16.0",

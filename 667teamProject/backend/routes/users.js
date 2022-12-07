@@ -15,12 +15,12 @@ router.post('/register', jsonBodyParser, (req, res, next) => {
 
   for (const field of ['name', 'email', 'password']) {
     if (!req.body[field])
-      return res.status(400).json({
+      return res.render('public_views/index', {
         error: `Missing '${field}' in request body`,
       });
   }
   const passwordError = UsersService.validatePassword(password);
-  if (passwordError) return res.status(400).json({ error: passwordError });
+  if (passwordError) return res.render('public_views/index', { error: passwordError });
   
 });
 
@@ -30,14 +30,14 @@ router.post('/login', jsonBodyParser, (req, res, next) => {
 
   for (const [key, value] of Object.entries(loginUser))
     if (value == null)
-      return res.status(400).json({
+      return res.render('public_views/index', {
         error: `Missing '${key}' in request body`,
       });
 
   AuthService.getUserWithUserName(req.app.get('db'), loginUser.user_name)
     .then((dbUser) => {
       if (!dbUser)
-        return res.status(400).json({
+        return res.render('public_views/index', {
           error: 'Incorrect user_name or password',
         });
 
@@ -46,7 +46,7 @@ router.post('/login', jsonBodyParser, (req, res, next) => {
         dbUser.password
       ).then((compareMatch) => {
         if (!compareMatch)
-          return res.status(400).json({
+          return res.render('public_views/index', {
             error: 'Incorrect user_name or password',
           });
 

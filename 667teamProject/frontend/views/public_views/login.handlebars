@@ -12,26 +12,46 @@
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5 text-white">Login</h2>
 
-                            <form>
+                            <form action="/api/login" role="form" method="post">
 
-                                <div class="form-outline mb-4 text-center text-white">
-                                    <label class="form-label " for="form3Example3cg">Your Email</label>
-                                    <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                                <div class='form-outline mb-4 text-center text-white'>
+                                    <label class='form-label' for='form3Example3cg'>Your Email</label>
+                                    <input
+                                    type='email'
+                                    id='email'
+                                    name='email'
+                                    class='form-control form-control-lg'
+                                    />
 
                                 </div>
 
-                                <div class="form-outline mb-4 text-center text-white">
-                                    <label class="form-label" for="form3Example4cg">Password</label>
-                                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                                <div class='form-outline mb-4 text-center text-white'>
+                                    <label
+                                    class='form-label'
+                                    >Password</label>
+                                    <input
+                                    type='password'
+                                    id='password'
+                                    name='password'
+                                    class='form-control form-control-lg'
+                                    />
 
                                 </div>
-                                <div class="form-check d-flex justify-content-center mb-5">
-                                    <input class="form-check-input me-2 mr-3 my-4" type="checkbox" value=""
-                                        id="form2Example3cg" />
-                                    <label class="form-check-label text-white" for="form2Example3g"> <br>
-                                        Remember Me?
-                                    </label>
-                                </div>
+
+                  <div
+                    class='form-check d-flex justify-content-center mb-5 text-white'
+                  >
+                    <input
+                      class='form-check-input me-2 mr-3 text-white my-4'
+                      type='checkbox'
+                      id='rememberMe'
+                      name='rememberMe'
+                    />
+                    <label class='form-check-label' for='form2Example3g'>
+                      <br />
+                        <small>Remember me</small>
+                    </label>
+                  </div>
 
                                 <div class="d-flex justify-content-center">
                                     <button type="button"
