@@ -25,10 +25,9 @@ const AuthService = {
   },
 
   requireAuth(req, res, next) {
-    const authToken = req.get('Authorization') || '';
-    const bearerToken = authToken.slice(7, authToken.length);
+    const authToken = req.cookies.jwt;
 
-    if (!bearerToken) {
+    if (!authToken) {
       return res.status(401).json({ error: 'Missing bearer token' });
     }
 

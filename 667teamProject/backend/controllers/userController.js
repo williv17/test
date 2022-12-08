@@ -3,6 +3,7 @@ const AuthService = require('../services/auth/auth-service.js');
 
 const registerUser = async (req, res, next) => {
   const { password, username, email } = req.body;
+  console.log(req.body);
   for (const field of ['email', 'username', 'password'])
     if (!req.body[field]) return res.status(400).send('missing field');
 
@@ -27,7 +28,7 @@ const registerUser = async (req, res, next) => {
                 username: user.username,
                 email: user.email,
               });
-            
+
               return res
                 .cookie(
                   'jwt',
@@ -40,7 +41,7 @@ const registerUser = async (req, res, next) => {
                   { secure: true }
                 )
                 .status(201)
-                .send({ token })
+                .send({ token });
             } else {
               return res.status(400).send('register failed');
             }
@@ -51,6 +52,50 @@ const registerUser = async (req, res, next) => {
     .catch(next);
 };
 
+const loginUser = async (req, res, next) => {
+  const { password, email } = req.body;
+  for (const field of ['email', 'password'])
+    if (!req.body[field]) return res.status(400).send('missing field');
+
+  await UserService.getUserWithEmail(req.app.get('db'), email)
+    .then(async (user) => {
+      if (!user) {
+        return res.status(400).send('invalid email or password');
+      }
+      
+      await AuthService.comparePasswords(password, user.password).then(
+        (passwordsMatch) => {
+          if (!passwordsMatch) {
+            return res.status(400).send('invalid email or password');
+          }
+
+          let token = AuthService.createJwt({
+            sub: user.id,
+            username: user.username,
+            email: user.email,
+          });
+
+          return res
+            .cookie(
+              'jwt',
+              token,
+              {
+                httpOnly: true,
+                path: '/',
+              },
+              { maxAge: 1000 * 60 * 60 * 24 * 7 },
+              { secure: true }
+            )
+            .status(201)
+            .send({ token });
+        }
+      );
+    })
+    .catch(next);
+};
+
+
 module.exports = {
   registerUser,
+  loginUser,
 };

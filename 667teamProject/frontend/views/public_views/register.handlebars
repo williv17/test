@@ -21,8 +21,9 @@
                   account</h2>
 
                 <form
-                  onsubmit='handleRegister(this)'
                   role='form'
+                  id="register-form"
+                  name="register-form"
                 >
 
                   {{#if error}}
@@ -92,7 +93,7 @@
 
                   <div class='d-flex justify-content-center text-white'>
                     <button
-                      type='submit'
+                      type='button' onclick="handleRegister(event)"
                       class='btn btn-success btn-block btn-lg gradient-custom-4 text-body rounded-pill'
                     >Register</button>
                   </div>

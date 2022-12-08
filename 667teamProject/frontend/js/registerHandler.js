@@ -1,6 +1,9 @@
 const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/;
 
-async function handleRegister(form) {
+async function handleRegister(event) {
+  event.preventDefault();
+  const form = document.querySelector('#register-form');
+
   if (form.terms_checkbox.checked) {
     const user = {
       username: form.username.value,
@@ -35,7 +38,7 @@ async function handleRegister(form) {
           alert(data.error);
         }
         if(data.token) {
-          window.location.href = '/';
+          document.location.replace('/');
         }
       })
       .catch((err) => {
