@@ -11,8 +11,15 @@
                 <h1 class="display-4 text-center text-muted bold fst-italic m-4">Team RYWL's Uno Game</h1>
 
             </div>
-            <div class="container text-center py-4">
-                <div class="row row-cols-6 row-cols-lg-3 g-2 g-lg-3 text-center text-white">
+            <div class="container text-center py-4" id="chat-container">
+                <div class="row row-cols-6 row-cols-lg-4 g-2 g-lg-3 text-center text-white">
+                    <div class="col">
+                        <form id="chat-box">
+                            <h1 id="title" style="color:white" style="text-align:center;">Global chat</h1>
+                            <input id="chat-text" type="text" placeholder="Enter Message..." required autocomplete="off" class="p-3 border-none bg-white "/>
+                            <button class="chat-button"><i class="fas fa-paper-plane"></i> Send</button>
+                        </form>
+                    </div>
                     <div class="col">
                         <a class="text-decoration-none text-white" href="../protected/games">
                             <div class="p-3 border-none bg-dark text-center ">Games</div>
@@ -31,8 +38,8 @@
                         </a>
 
                     </div>
-                   
-                    
+
+
                 </div>
             </div>
         </div>

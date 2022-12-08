@@ -11,12 +11,12 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "bootstrap": "^5.2.2",
+    "bootstrap": "^5.2.3",
     "consolidate": "^0.16.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.0.3",
-    "express": "~4.16.1",
+    "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "handlebars": "^4.7.7",
     "http-errors": "~1.6.3",
@@ -28,7 +28,7 @@
     "pug": "^3.0.2",
     "sequelize": "^6.25.8",
     "sequelize-cli": "^6.5.2",
-    "swig": "^1.4.2",
+    "swig": "^0.14.0",
     "xss": "^1.0.14"
   },
   "devDependencies": {
