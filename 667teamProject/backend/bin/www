@@ -19,11 +19,16 @@ const db = Database.Connect();
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 app.set('db', db); 
+
 /**
  * Create HTTP server.
  */
 
 var server = http.createServer(app);
+
+var server = http.createServer(app)
+var io = require('socket.io')(server)
+io.listen(server)
 
 /**
  * Listen on provided port, on all network interfaces.
