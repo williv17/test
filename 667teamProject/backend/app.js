@@ -41,5 +41,6 @@ app.use(function (err, req, res, next) {
 //app.set('view engine', 'pug');
 app.use("/", mainRouter);
 app.use("/js", express.static(path.join(__dirname, "../frontend/js")));
+app.use('/assets', express.static(path.join(__dirname, '../frontend/assets')));
 
 module.exports = app;
