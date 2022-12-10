@@ -7,7 +7,9 @@
     "db:migrate": "npx sequelize db:migrate",
     "db:rollback": "npx sequelize db:migrate:undo",
     "db:seed": "npx sequelize db:seed:all",
-    "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./backend/bin/www"
+    "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./backend/bin/www",
+    "start:prod": "NODE_ENV=production node ./backend/bin/www",
+    "start": "npm run start:dev"
   },
   "dependencies": {
     "asyncbars": "^0.2.0",

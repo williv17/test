@@ -1,180 +1,455 @@
-body {
-    height:100vh;
-  }
-  
-  
-  .gamePageArea {
-    flex-grow: 1;
-    padding: 0px;
-    background-color: #58636e;
-  }
-  .game {
-    margin: 1px;
-    padding: 2px;
-  }
-  
-  .bottom {
-    flex-basis: 145px;
-    flex-grow: 0.5;
-    margin: 1px;
-  }
-  
-  .bottom .container-fluid {
-    padding: 0px;
-  }
+body,
+html {
+  height: 100%;
+}
 
-  
-  .top {
-    flex-grow: 0.5;
-  }
-  
-  .middle {
-    flex-grow: 1;
-  }
-  
+.bg {
+  /* The image used */
+  background-image: url("https://img.freepik.com/free-photo/abstract-grunge-decorative-relief-navy-blue-stucco-wall-texture-wide-angle-rough-colored-background_1258-28311.jpg?w=2000&t=st=1670651949~exp=1670652549~hmac=a41d9bcc846d4c9720f663dcaec7686718050e2e441a1a87610e7fb4404b756e");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#leftPlayerOneCardOne, #leftPlayerOneCardOne > img {
+  height: 20px; 
+
+  position: relative;
+  margin-left: 100px;
+  margin-top: 100px;
+}
+
+#leftPlayerOneCardOne > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: -12px;
+  margin-top: 100px;
+}
+
+#leftPlayerOneCardTwo > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 100px;
+  margin-top: 100px;
+}
+
+#leftPlayerOneCardThree > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 100px;
+  margin-top: -100px;
+}
+
+#leftPlayerOneCardFour > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 100px;
+  margin-top: -100px;
+}
+
+#leftPlayerOneCardFive > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 100px;
+  margin-top: -100px;
+}
+
+#leftPlayerOneCardSix > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 100px;
+  margin-top: -100px;
+}
+
+#leftPlayerOneCardSeven> div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 100px;
+  margin-top: -100px;
+}
+
+#leftPlayerOneCardEight > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 100px;
+  margin-top: -100px;
+}
+
+#leftPlayerOneCardNine > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 100px;
+  margin-top: -100px;
+}
+
+#leftPlayerOneCardTen > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 100px;
+  margin-top: -100px;
+}
+
+#playerNumberOne > div {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 80px;
+  margin-top: 10px;
+}
+
+/* End Of Player Number One Hand */
+
+/* #main-wrapper {
+  position: relative;
+  margin-bottom: 300px;
+  width: 100%;
+  height: 100%;
+  background: #000;
+} */
+
+/* Start of Player Two Hand */
+#topPlayerTwoCardOne, #topPlayerTwoCardOne > img {
+  height: 20px; 
+
+  position: relative;
+  margin-left: 600px;
+  margin-bottom: -700px;
+}
+
+#topPlayerTwoCardOne > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 160px;
+  margin-top: -1090px;
+}
+
+#topPlayerTwoCardTwo > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 600px;
+  margin-top: 100px;
+}
+
+#topPlayerTwoCardThree > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 610px;
+  margin-top: -130px;
+}
+
+#topPlayerTwoCardFour > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 625px;
+  margin-top: -178px;
+}
+
+#topPlayerTwoCardFive > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 645px;
+  margin-top: -225px;
+}
+
+#topPlayerTwoCardSix > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 665px;
+  margin-top: -275px;
+}
+
+#topPlayerTwoCardSeven > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 685px;
+  margin-top: -323px;
+}
+
+#topPlayerTwoCardEight > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 705px;
+  margin-top: -370px;
+}
+
+#topPlayerTwoCardNine > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 730px;
+  margin-top: -418px;
+}
+
+#topPlayerTwoCardTen > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 750px;
+  margin-top: -467px;
+}
+
+#playerNumberTwo> div {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 665px;
+  margin-top: -170px;
+}
+
+/* Center Cards on Table */
+/* //////////////////////// */
+
+#faceUpDeck > div > img{
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 650px;
+  margin-top: -600px;
+}
+
+
+#faceDownPlayerDeck > div >img{
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 730px;
+  margin-top: -650px;
+}
+
+/* //////////////////////////////// */
+
+/* Start Of Player Three Hand */
+
+#rightPlayerThreeCardOne, #rightPlayerThreeCardOne > img {
+  height: 20px; 
+
+  position: relative;
+  margin-left: 187px;
+  margin-top: -1070px;
+}
+
+#rightPlayerThreeCardOne > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 900px;
+  margin-top: 600px;
+}
+
+#rightPlayerThreeCardTwo > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 1100px;
+  margin-top: 600px;
+}
+
+#rightPlayerThreeCardThree > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 1100px;
+  margin-top: -100px;
+}
+
+#rightPlayerThreeCardFour > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 1100px;
+  margin-top: -120px;
+}
+
+#rightPlayerThreeCardFive > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 1100px;
+  margin-top: -130px;
+}
+
+#rightPlayerThreeCardSix > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 1100px;
+  margin-top: -130px;
+}
+
+#rightPlayerThreeCardSeven > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 1100px;
+  margin-top: -130px;
+}
+
+#rightPlayerThreeCardEight > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 1100px;
+  margin-top: -128px;
+}
+
+#rightPlayerThreeCardNine > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 1100px;
+  margin-top: -125px;
+}
+
+#rightPlayerThreeCardTen > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 1100px;
+  margin-top: -140px;
+}
+
+#playerNumberThree> div {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 1075px;
+  margin-top: -80;
+}
+
+
+/* Start Of Player Four Hand */
+
+#bottomPlayerFourCardOne, #bottomPlayerFourCardOne > img {
+  height: 20px; 
+
+  position: relative;
  
+  
+}
 
-  .gameCard {
-    box-sizing: border-box;
-    display: block;
-  
-    height: 120px;
-    width: 67px;
-  
-    margin: 8px;
-    padding: 0px;
-  
+#bottomPlayerFourCardOne > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 600px;
+  margin-top: -50px;
+}
 
-  }
-  
-  #cardcenter .gameCard:hover {
-    transform: scale(1.6);
-  }
-  
-  .middle .center {
-    padding: 0px;
-  }
-  
-  #cardcenter {
-    padding: 0px;
-  }
-  
-  #cardcenter .row {
-    margin: 0px;
-    height: 100%;
-    width: 100%;
-  }
-  
-  .middle .col-sm {
-    padding: 2px;
-    max-height: 100%;
-  }
-  
-  .row .col-sm-6 {
-    padding: 2px;
-  }
-  
-  .displayCard,
-  .hideDisplayCard {
-    display: block;
-    height: 100px;
-    max-height: 100px;
-    width: 100%;
-    object-fit: cover;
-  
-    border-radius: 5px;
-    box-shadow: 4px 2px 2px rgba(0, 0, 0, 0.2);
-  }
-  
-  .cards {
-    cursor: pointer;
-  
-    padding: 0px;
-  
-    z-index: 1000;
-  }
-  
+#bottomPlayerFourCardTwo > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 613px;
+  margin-top: -70px;
+}
 
-  
-  .game-hand {
-    box-sizing: border-box;
-    display: flex;
-  
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex-grow: 1;
-  
-    height: 100%;
-    width: 100%;
-  
-    justify-content: center;
-    align-items: start;
-  }
-  
-  .game-hand .gameCard {
-    margin: 2px;
-    max-height: 60px;
-    max-width: 32px;
-    height: 100px;
-    max-height: 100px;
-  }
-  
-  .game-hand .hideDisplayCard,
-  .game-hand .displayCard {
-    height: 100%;
-    height: 100px;
-    max-height: 100px;
-    object-fit: contain;
-  }
-  
-  .gameplayerincenter {
-    box-sizing: border-box;
-    display: flex;
-  
-    flex-direction: column;
-  
-    justify-content: center;
-    align-items: start;
-  }
-  
+#bottomPlayerFourCardThree > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 625px;
+  margin-top: -130px;
+}
 
-  
-  .topgameplayer-container {
-    box-sizing: border-box;
-    display: flex;
-  
-    flex-direction: row;
-  
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .usergamebox {
-    box-sizing: border-box;
-    display: flex;
-  
-    flex-direction: row;
-  
-    justify-content: center;
-    align-items: center;
-  }
-  
+#bottomPlayerFourCardFour > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 645px;
+  margin-top: -178px;
+}
 
-  .gameplayeronside {
-    padding: 0px 20px;
-  }
-  
+#bottomPlayerFourCardFive > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 665px;
+  margin-top: -226px;
+}
 
-  .titleOfChat {
-    border-bottom: 1px solid grey;
-    padding: 8px 16px;
-  }
+#bottomPlayerFourCardSix > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 678px;
+  margin-top: -275px;
+}
 
-  
-  .chatTitleTop {
-    display: block;
-    color: rgb(251, 237, 80);
-    text-align: center;
-  }
-  
+#bottomPlayerFourCardSeven > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 700px;
+  margin-top: -322px;
+}
 
+#bottomPlayerFourCardEight > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 725px;
+  margin-top: -370px;
+}
+
+#bottomPlayerFourCardNine > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 740px;
+  margin-top: -418px;
+}
+
+#bottomPlayerFourCardTen > div > img {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 760px;
+  margin-top: -466px;
+}
+
+#playerNumberFour> div {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 640px;
+  margin-top: -80px;
+}
+
+
+/* Chat Section */
+
+#chatbox {
+  height: 700px;
+  width: 600px; 
+  position: relative;
+margin-left: 1260px;
+margin-top: -800px;
+}
+
+#userInput, #sendChat-btn{
+  padding-top: 25px;
+  margin-top: 570px;
+}

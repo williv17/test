@@ -1,100 +1,384 @@
-<div class="container-fluid d-flex flex-column h-100">
-    <div class="row flex-fill d-flex flex-row">
-        <div class="gamePageArea col">
-            <div class="game container-fluid h-100 d-flex flex-column">
-                <div class="top row mt-5">
-                    <div class="container-fluid w-100 h-100">
-                        <div class="row w-100 h-100">
-                            <div class="col playerAtTop">
-                                <div class="nameOfGameUser"> </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="middle row">
-                    <div class="col-sm center-player">
-                        <div class="nameOfGameUser"> </div>
-                    </div>
-                    <div class="center col-sm">
-                        <div class="row justify-content-center align-items-center">
-                            <div class="arrowForGameDirection card bg-dark text-white me-5   gameCard">
-                                <img class="gameCard" src="/assets/images/unocard.jpg" />
-                                <div class=" card bg-dark text-white   gameCard">
-                                     <img class="displayCard gameCard"
-                                    src="/assets/images/unocard.jpg" />
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm center-player alterDirection">
-                        <div class="nameOfGameUser"> </div>
-                    </div>
-                </div>
-                <div class="bottom row">
-                    <div class="container-fluid w-100 h-100">
-                        <div class="row w-100 h-100">
-                            <div class="col user-player-container">
-                                <div class="nameOfGameUser"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<body class="bg">
+    <link rel="stylesheet" href="/assets/stylesheets/cardGame.css">
+    {{!-- Player Number One with 10 cards --}}
+    <div class="main-wrapper leftPlayersHandWrap text-white ">
+        {{!-- Cards 1-10 --}}
+        <div class="row faceUp" id="leftPlayerOneCardOne">
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+
+        </div>
+
+        <div class="row " id="leftPlayerOneCardTwo">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
             </div>
         </div>
-        <div class="chatView col-sm-3 flex-column bg-dark">
-            <div class="titleOfChat container bg-dark pt-2 pb-2">
+
+        <div class="row " id="leftPlayerOneCardThree">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="leftPlayerOneCardFour">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="leftPlayerOneCardFive">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="leftPlayerOneCardSix">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="leftPlayerOneCardSeven">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="leftPlayerOneCardEight">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="leftPlayerOneCardNine">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="leftPlayerOneCardTen">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="playerNumberOne">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <h3> Player#1</h3>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    {{!-- Player Number Two with 10 cards --}}
+
+    <div class="main-wrapper topPlayerHandWrap text-white ">
+        {{!-- Cards 1-10 --}}
+        <div class="row faceUp" id="topPlayerTwoCardOne">
+            <div class=".col-md-3 .mt-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+
+        </div>
+
+        <div class="row " id="topPlayerTwoCardTwo">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="topPlayerTwoCardThree">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="topPlayerTwoCardFour">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="topPlayerTwoCardFive">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="topPlayerTwoCardSix">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="topPlayerTwoCardSeven">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="topPlayerTwoCardEight">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="topPlayerTwoCardNine">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="topPlayerTwoCardTen">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="playerNumberTwo">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <h3> Player#2</h3>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    {{!-- Card Deck Center with 2 cards representing draw pile and shown played card --}}
+
+    <div class="main-wrapper topPlayerHandWrap text-white ">
+
+        <div class="row CenterCardfaceUpDeck" id="faceUpDeck">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row CenterCardfaceDownPlayedDeck" id="faceDownPlayerDeck">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+    </div>
+
+
+
+    {{!-- Player Number Three with 10 cards --}}
+
+    <div class="main-wrapper rightPlayerHandWrap text-white ">
+        {{!-- Cards 1-10 --}}
+        <div class="row faceUp" id="rightPlayerThreeCardOne">
+            <div class=".col-md-3 .mt-md-auto ">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+
+        </div>
+
+        <div class="row " id="rightPlayerThreeCardTwo">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="rightPlayerThreeCardThree">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="rightPlayerThreeCardFour">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="rightPlayerThreeCardFive">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="rightPlayerThreeCardSix">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="rightPlayerThreeCardSeven">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="rightPlayerThreeCardEight">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="rightPlayerThreeCardNine">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="rightPlayerThreeCardTen">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="playerNumberThree">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <h3> Player#3</h3>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    {{!-- Player Number Four with 10 cards --}}
+    <div class="main-wrapper bottomPlayerHandWrap text-white ">
+        {{!-- Cards 1-10 --}}
+        <div class="row faceUp" id="bottomPlayerFourCardOne">
+            <div class=".col-md-3 .mt-md-auto ">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+
+        </div>
+
+        <div class="row " id="bottomPlayerFourCardTwo">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="bottomPlayerFourCardThree">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="bottomPlayerFourCardFour">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="bottomPlayerFourCardFive">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="bottomPlayerFourCardSix">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+        <div class="row " id="bottomPlayerFourCardSeven">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="bottomPlayerFourCardEight">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="bottomPlayerFourCardNine">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="bottomPlayerFourCardTen">
+
+            <div class=".col-md-3 .ml-md-auto">
+
+                <img src="assets/images/unoCard.jpg" alt="missingCard">
+            </div>
+        </div>
+
+        <div class="row " id="playerNumberFour">
+
+            <div class=".col-md-3 .ml-md-auto">
+                <h3> Player#4</h3>
+            </div>
+        </div>
+
+        {{!-- ///////////////////////////////////////////////////////
+        ///////////////////CHAT SECTION ///////////////////////
+        /////////////////////////////////////////////////////// --}}
+
+        <div class="chat col-sm-3 flex-column bg-dark" id="chatbox">
+            <div class="titleOfChatBox container bg-dark pt-2 pb-2">
                 <div class="row">
-                    <div class="chat-close-container col-sm-1 text-center mt-2"></div>
-                    <div class="chatTitleTop col h4 mt-1">Chat</div>
+                    <div class="chat-title col h3 mt-1 text-center text-warning">Game Chat</div>
                     <div class="chatbox"></div>
                     <div class="chat-message-box container bg-dark mb-2">
                         <form>
                             <div class="input-group"><input class="form-control" id="userInput" type="text" /><button
-                                    class="btn bg-success" id="chatbox-btn" type="submit"></button></div>
+                                    class="btn bg-success text-white" classname="ChatSendButton"  id="sendChat-btn" type="submit">
+                                    Send </button></div>
                         </form>
                     </div>
+                </div>
+            </div><button class="btn btn-default open-chat" id="chat-open-btn"><i
+                    class="fa fa-chevron-left"></i></button>
+        </div>
 
-                </div>
-            </div>
-        </div>
     </div>
-    <div class="modal fade" id="selectColorOption" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark text-white">
-                <div class="modal-body">
-                    <h4 class="modal-title">Select a color</h4>
-                    <h5 class="modal-subtitle">Which color would you like to use for this wildcard?</h5>
-                    <div class="row p-2">
-                        <div class="col-sm-6">
-                            <div class="btn btn-success d-block m-2" type="button" onclick="chooseColor(`green`)">Green
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="btn btn-warning d-block m-2" type="button" onclick="chooseColor('yellow')">
-                                Yellow
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="btn btn-danger d-block m-2" type="button" onclick="chooseColor('red')">Red</div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="btn btn-primary d-block m-2" type="button" onclick="chooseColor('blue')">Blue
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="endOfGameDisplay" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark text-white">
-                <div class="modal-body">
-                    <h4 class="modal-title text-center m-2">Sorry, the game ended</h4><a
-                        class="btn btn-success d-block m-2" href="/dashboard" type="button">Click to go to dashboard</a>
-                </div>
-            </div>
-        </div>
-        <link rel="stylesheet" href="/assets/stylesheets/cardGame.css">
-    </div>
+
+</body>
