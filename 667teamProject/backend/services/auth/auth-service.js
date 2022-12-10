@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { JWT_EXPIRES_IN, JWT_SECRET } = require('../../config/config');
+const User = require('../../models/user');
+const UserService = require('../user-service');
 
 const AuthService = {
   comparePasswords(password, hash) {
@@ -24,31 +26,31 @@ const AuthService = {
     return Buffer.from(token, 'base64').toString().split(':');
   },
 
-  requireAuth(req, res, next) {
+  async requireAuth(req, res, next) {
     const authToken = req.cookies.jwt;
 
     if (!authToken) {
-      return res.status(401).json({ error: 'Missing bearer token' });
+      return res.status(401).redirect('/login');
     }
 
     try {
-      const payload = verifyJwt(bearerToken);
+      const payload = AuthService.verifyJwt(authToken);
       const id = payload.sub;
-
-      User.findById;
-      User.findOne({ where: { id } })
-        .then((user) => {
-          if (!user)
-            return res.render('error', { error: 'Unauthorized request' });
-          req.user = user;
-          next();
-        })
-        .catch((err) => {
-          console.error(err);
-          next(err);
-        });
+      await UserService.getUserWithId(req.app.get('db'), id)
+      .then((user) => {
+        if (!user) {
+          return res.status(401).redirect('/login');
+        }
+        req.user = { id: user.id, username: user.username, email: user.email}
+        next();
+      })
+      .catch((err) => {
+        console.error(err);
+        next(err);
+      });
     } catch (error) {
-      res.render('error', { error: 'Unauthorized request' });
+      console.error(error);
+      res.status(401).redirect('/login');
     }
   },
 };

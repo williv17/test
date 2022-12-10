@@ -9,4 +9,8 @@ controllerRouter.get('/logout', function (request, response, next) {
   response.redirect('/');
 });
 
+controllerRouter.get('/user', function (request, response, next) {
+  userController.getUserWithAccessToken(request, response, next);
+});
+
 module.exports = controllerRouter;

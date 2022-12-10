@@ -6,7 +6,6 @@ const { engine } = require('express-handlebars');
 const mainRouter = require('./routes');
 const app = express();
 
-const users = {}
 
 if (process.env.NODE_ENV === 'development') {
   require('dotenv').config();
@@ -44,6 +43,5 @@ app.use("/", mainRouter);
 app.use("/js", express.static(path.join(__dirname, "../frontend/js")));
 app.use('/assets', express.static(path.join(__dirname, '../frontend/assets')));
 app.use('/backend', express.static(path.join(__dirname, '../backend')));
-app.use('/socket.io', express.static(path.join(__dirname, '../node_modules/socket.io')));
 
 module.exports = app;

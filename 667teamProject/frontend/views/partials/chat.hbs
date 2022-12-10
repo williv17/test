@@ -1,13 +1,12 @@
-<script>
- <div class="col" id="chat-container">
-  <h1 id="title">Global chat</h1>
-  <div id="messages">
+<div class="col" id="chat-container">
+  <h1 id="title">Lobby chat</h1>
+  <div id="message-container">
 
   </div>
   <form id="chat-box">
-   <input id="chat-text" type="text" placeholder="Enter Message..." required autocomplete="off"
+   <input id="message-input" type="text" placeholder="Enter Message..." required autocomplete="off"
     class="p-3 border-none bg-white " />
-   <button class="chat-button"><i class="fas fa-paper-plane"></i> Send</button>
+   <button type="submit" id="send-button"><i class="fas fa-paper-plane"></i> Send</button>
   </form>
+  <script defer src="backend/services/chat-service.js"></script>
  </div>
-</script>

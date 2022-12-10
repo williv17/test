@@ -1,15 +1,12 @@
 var express = require('express');
-var router = express.Router();
+var lobbyRouter = express.Router();
+const lobbyController = require('../controllers/lobbyController.js');
+const AuthService = require('../services/auth/auth-service');
 
-/* GET home page. */
-router.get('/', function(request, response, next) {
-  response.render("protected/lobby");
-});
-
+lobbyRouter.get('/', AuthService.requireAuth, lobbyController.renderLobby);
 
 
-
-module.exports = router;
+module.exports = lobbyRouter;
 
 
 

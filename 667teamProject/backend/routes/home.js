@@ -41,7 +41,7 @@ homeRouter.get('/', function (request, response, next) {
     )
   );
 
-  console.log('access_token: ' + access_token);
+  // console.log('access_token: ' + access_token);
 
   const template = Handlebars.compile(home_temp_str);
   const html = template({
