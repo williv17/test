@@ -6,11 +6,7 @@ const rulesRouter = require('./rules.js');
 const homeRouter = require('./home.js');
 const loginRouter = require('./login.js');
 const registerRouter = require('./register.js');
-const infoRouter = require('./info.js');
-
-//test for game page view
-
-const gameRouter = require('./game.js');
+const lobbyRouter = require('./lobby.js');
 
 /* GET home page. */
 
@@ -21,5 +17,6 @@ mainRouter.use('/api', controllerRouter);
 mainRouter.use('/login', loginRouter);
 mainRouter.use('/register', registerRouter);
 mainRouter.use('/game', gameRouter);
+mainRouter.use('/lobby', lobbyRouter);
 
 module.exports = mainRouter;

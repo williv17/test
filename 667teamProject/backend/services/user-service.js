@@ -14,6 +14,15 @@ const UsersService = {
     return await db.USER.findOne({ where: { email } });
   },
 
+  async getUserWithId(db, id) {
+    return await db.USER.findOne({ where: { id } });
+  },
+
+  async getUserWithAccessToken(db, authToken) {
+    const payload = AuthService.verifyJwt(authToken);
+    return await db.USER.findOne({ where: { id: payload.sub } });
+  },
+
   async insertUser(db, newUser) {
     return await db.USER.create(newUser);
   },

@@ -3,7 +3,7 @@ const AuthService = require('../services/auth/auth-service.js');
 
 const registerUser = async (req, res, next) => {
   const { password, username, email } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   for (const field of ['email', 'username', 'password'])
     if (!req.body[field]) return res.status(400).send('missing field');
 
@@ -96,7 +96,33 @@ const loginUser = async (req, res, next) => {
 };
 
 
+const getUserWithAccessToken = async (req, res, next) => {
+  let access_token;
+  if(req.cookies.jwt) {
+    access_token = req.cookies.jwt;
+  } else {
+    return res.status(401).json({ error: 'Unauthorized request' });
+  }
+
+  try {
+    const payload = AuthService.verifyJwt(access_token);
+
+    await UserService.getUserWithId(req.app.get('db'), payload.sub).then(
+      (user) => {
+        if (!user) {
+          return res.status(401).json({ error: 'Unauthorized request' });
+        }
+        return res.status(200).send(user);
+      }
+    );
+  } catch (error) {
+    res.status(401).json({ error: 'Unauthorized request' });
+  }
+};
+
+
 module.exports = {
   registerUser,
   loginUser,
+  getUserWithAccessToken,
 };

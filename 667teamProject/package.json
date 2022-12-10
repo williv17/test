@@ -7,9 +7,7 @@
     "db:migrate": "npx sequelize db:migrate",
     "db:rollback": "npx sequelize db:migrate:undo",
     "db:seed": "npx sequelize db:seed:all",
-    "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./backend/bin/www",
-    "start:prod": "NODE_ENV=production node ./backend/bin/www",
-    "start": "npm run start:dev"
+    "start:dev": "NODE_ENV=development DEBUG=APP_NAME:* nodemon ./backend/bin/server"
   },
   "dependencies": {
     "asyncbars": "^0.2.0",
@@ -19,7 +17,7 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.0.3",
-    "express": "~4.16.1",
+    "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "handlebars": "^4.7.7",
     "http-errors": "~1.6.3",
@@ -32,7 +30,8 @@
     "pug": "^3.0.2",
     "sequelize": "^6.25.8",
     "sequelize-cli": "^6.5.2",
-    "swig": "^1.4.2",
+    "socket.io": "^4.5.4",
+    "swig": "^0.14.0",
     "xss": "^1.0.14"
   },
   "devDependencies": {

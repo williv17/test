@@ -9,6 +9,9 @@ var debug = require('debug')('667teamproject:server');
 var http = require('http');
 const Database = require('../models');
 const db = Database.Connect();
+const socket = require('socket.io');
+const users = {};
+
 
 
 
@@ -19,19 +22,35 @@ const db = Database.Connect();
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 app.set('db', db); 
+
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = http.createServer(app).listen(app.get('port'), function() {
+  console.log('Express server listening on port ' + app.get('port'));
+});
+var io = socket(server);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
+io.on('connection', function(socket) {
+  console.log("A user connected");
+  socket.on('disconnect', function() {
+    socket.broadcast.emit('user-disconnected', users[socket.id]);
+    delete users[socket.id];
+  });
+  socket.on('send-chat-message', (message) => {
+    socket.broadcast.emit('chat-message', {
+      message: message,
+      name: users[socket.id].username,
+    });
+  });
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+  socket.on('lobby-join', (user) => {
+    users[socket.id] = user;
+    socket.broadcast.emit('user-connected', user);
+  }
+  );
+});
 
 /**
  * Normalize a port into a number, string, or false.
@@ -75,7 +94,6 @@ function onError(error) {
     case 'EADDRINUSE':
       console.error(bind + ' is already in use');
       process.exit(1);
-      break;
     default:
       throw error;
   }

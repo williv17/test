@@ -4,12 +4,12 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const { engine } = require('express-handlebars');
 const mainRouter = require('./routes');
+const app = express();
+
 
 if (process.env.NODE_ENV === 'development') {
   require('dotenv').config();
 }
-
-const app = express();
 
 app.engine(
   'handlebars',
@@ -42,5 +42,7 @@ app.use(function (err, req, res, next) {
 app.use("/", mainRouter);
 app.use("/assets", express.static(path.join(__dirname, "../frontend/assets")));
 app.use("/js", express.static(path.join(__dirname, "../frontend/js")));
+app.use('/assets', express.static(path.join(__dirname, '../frontend/assets')));
+app.use('/backend', express.static(path.join(__dirname, '../backend')));
 
 module.exports = app;
