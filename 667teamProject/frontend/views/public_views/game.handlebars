@@ -1,0 +1,100 @@
+<div class="container-fluid d-flex flex-column h-100">
+    <div class="row flex-fill d-flex flex-row">
+        <div class="gamePageArea col">
+            <div class="game container-fluid h-100 d-flex flex-column">
+                <div class="top row mt-5">
+                    <div class="container-fluid w-100 h-100">
+                        <div class="row w-100 h-100">
+                            <div class="col playerAtTop">
+                                <div class="nameOfGameUser"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="middle row">
+                    <div class="col-sm center-player">
+                        <div class="nameOfGameUser"> </div>
+                    </div>
+                    <div class="center col-sm">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="arrowForGameDirection card bg-dark text-white me-5   gameCard">
+                                <img class="gameCard" src="/assets/images/unocard.jpg" />
+                                <div class=" card bg-dark text-white   gameCard">
+                                     <img class="displayCard gameCard"
+                                    src="/assets/images/unocard.jpg" />
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm center-player alterDirection">
+                        <div class="nameOfGameUser"> </div>
+                    </div>
+                </div>
+                <div class="bottom row">
+                    <div class="container-fluid w-100 h-100">
+                        <div class="row w-100 h-100">
+                            <div class="col user-player-container">
+                                <div class="nameOfGameUser"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chatView col-sm-3 flex-column bg-dark">
+            <div class="titleOfChat container bg-dark pt-2 pb-2">
+                <div class="row">
+                    <div class="chat-close-container col-sm-1 text-center mt-2"></div>
+                    <div class="chatTitleTop col h4 mt-1">Chat</div>
+                    <div class="chatbox"></div>
+                    <div class="chat-message-box container bg-dark mb-2">
+                        <form>
+                            <div class="input-group"><input class="form-control" id="userInput" type="text" /><button
+                                    class="btn bg-success" id="chatbox-btn" type="submit"></button></div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="selectColorOption" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-body">
+                    <h4 class="modal-title">Select a color</h4>
+                    <h5 class="modal-subtitle">Which color would you like to use for this wildcard?</h5>
+                    <div class="row p-2">
+                        <div class="col-sm-6">
+                            <div class="btn btn-success d-block m-2" type="button" onclick="chooseColor(`green`)">Green
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="btn btn-warning d-block m-2" type="button" onclick="chooseColor('yellow')">
+                                Yellow
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="btn btn-danger d-block m-2" type="button" onclick="chooseColor('red')">Red</div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="btn btn-primary d-block m-2" type="button" onclick="chooseColor('blue')">Blue
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="endOfGameDisplay" aria-hidden="true" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-body">
+                    <h4 class="modal-title text-center m-2">Sorry, the game ended</h4><a
+                        class="btn btn-success d-block m-2" href="/dashboard" type="button">Click to go to dashboard</a>
+                </div>
+            </div>
+        </div>
+        <link rel="stylesheet" href="/assets/stylesheets/cardGame.css">
+    </div>

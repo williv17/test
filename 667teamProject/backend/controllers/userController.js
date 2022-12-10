@@ -13,6 +13,7 @@ const registerUser = async (req, res, next) => {
         return res.status(400).send('username already taken');
       }
 
+      console.log("I made it here");
       await UserService.hashPassword(password).then(async (hashedPassword) => {
         const newUser = {
           username,

@@ -9,6 +9,8 @@ const UsersService = {
   },
 
   async getUserWithEmail(db, email) {
+    console.log("I made it here too");
+
     return await db.USER.findOne({ where: { email } });
   },
 
