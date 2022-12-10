@@ -18,24 +18,27 @@ const partials = [
 ];
 
 const registerPartial = (partialName, partialPath) => {
-  Handlebars.registerPartial(
-    partialName,
-    fs.readFileSync(path.join(__dirname, partialPath), 'utf8')
-  );
+  partials.push({
+    name: partialName,
+    path: partialPath,
+  });
 };
 
-const renderPage = (response, templatePath, bodyPath) => {
+const renderPage = (response, templatePath, doc_body) => {
+
   const access_token = response.access_token;
   const user = response.user;
-  const doc_body = fs.readFileSync(path.join(__dirname, bodyPath), 'utf8');
   const home_temp_str = fs.readFileSync(
     path.join(__dirname, templatePath),
     'utf8'
   );
 
   partials.forEach((partial) => {
-    registerPartial(partial.name, partial.path);
-  });
+    Handlebars.registerPartial(
+      partial.name,
+      fs.readFileSync(path.join(__dirname, partial.path), 'utf8')
+    );
+    });
 
 
   const template = Handlebars.compile(home_temp_str);
@@ -48,6 +51,23 @@ const renderPage = (response, templatePath, bodyPath) => {
   response.set('Content-Type', 'text/html');
   response.status(201).send(Buffer.from(html));
 };
+
+
+// const compilePage = (templatePath, partials) => {
+//   const home_temp_str = fs.readFileSync(
+//     path.join(__dirname, templatePath),
+//     'utf8'
+//   );
+
+//   partials.forEach((partial) => {
+//     registerPartial(partial.name, partial.path);
+//   });
+
+//   const template = Handlebars.compile(home_temp_str);
+//   const html = template({
+    
+// };
+
 
 
 module.exports = {
