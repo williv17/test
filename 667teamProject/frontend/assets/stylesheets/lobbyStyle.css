@@ -46,7 +46,7 @@
  background: #0ca8d7;
 }
 
-.games-container{
+.game-container{
  height: 200px;
  overflow-x:hidden;
  overflow-y: auto;

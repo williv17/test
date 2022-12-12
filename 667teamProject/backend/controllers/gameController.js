@@ -57,20 +57,19 @@ const renderGame = (request, response) => {
 };
 
 const createGame = async (request, response, next) => {
-  const host = request.body;
-
-  const test_game = {
-    gameName: 'test',
-    gamePassword: 'test',
-    gameHost: host.username,
-    gameHostId: host.id,
-    maxPlayers: 2,
+  const game = request.body;
+  console.log(game);
+  console.log("creating game...");
+  const newGame = {
+    gameName: game.gameName,
+    gamePassword: game.gamePassword,
+    gameHost: game.gameHost,
+    gameHostId: game.gameHostId,
+    maxPlayers: game.maxPlayers,
     gameStatus: 'waiting',
   };
 
-  console.log("creating game...");
-
-  await GameService.insertGame(request.app.get('db'), test_game)
+  await GameService.insertGame(request.app.get('db'), newGame)
     .then((game) => {
       if (!game) {
         return response.status(400).json({
@@ -159,6 +158,42 @@ const getGame = async (request, response, next) => {
   return game;
 };
 
+const getLobbyGameList = async (request, response, next) => {
+  const game_list = await GameService.getLobbyGameList(request.app.get('db'))
+    .then((db_game_list) => {
+      if (!db_game_list) {
+        return response.status(400).json({
+          error: { message: 'game_list not found' },
+        });
+      }
+      response.db_game_list = JSON.stringify(db_game_list);
+      return response.status(201).json(db_game_list);
+    })
+    .catch(next);
+
+  return game_list;
+};
+
+const getGameId = async (request, response, next) => {
+  const game = {
+    gameHostId: request.url.split('/')[2],
+    gameName: request.url.split('/')[3],
+  };
+  const game_id = await GameService.getGameId(request.app.get('db'), game)
+    .then((db_game_id) => {
+      if (!db_game_id) {
+        return response.status(400).json({
+          error: { message: 'game_id not found' },
+        });
+      }
+      response.db_game_id = JSON.stringify(db_game_id);
+      return response.status(201).json(db_game_id);
+    })
+    .catch(next);
+    
+  return game_id;
+};
+
 
 module.exports = {
   createGame,
@@ -167,4 +202,6 @@ module.exports = {
   getGameUser,
   getGame,
   getGameCount,
+  getLobbyGameList,
+  getGameId,
 };

@@ -1,11 +1,12 @@
 <script defer src="js/lobbyHandler.js"></script>
+<script defer src="js/gameDriver.js"></script>
 <div class="lobby-container">
     <div class="bg-image" style="background-image: url('https://cdn.pixabay.com/photo/2021/05/18/02/59/uno-6262204_1280.jpg');
                 height: 122vh;">
         <div class="lobby-header">
             <h1>Team RYWL's Uno Game</h1>
         </div>
-        <div class="lobby-body-container">
+        <div class="lobby-body-container" id="lobby-body-container">
             <form class="create-game-container" id="game-form">
                 <input id="game-name" type="text" placeholder="Game Name..." required autocomplete="off"
                     class="p-3 border-none bg-white " />
@@ -16,9 +17,9 @@
                 <button type="submit" id="lobby-button"><i class="fas fa-paper-plane"></i>Create Game</button>
             </form>
             <h1 class="lobby-header">Current Games</h1>
-            <div class="games-container">
+            <ul class="game-container" id="game-container">
 
-            </div>
+            </ul>
         </div>
         <div>
             {{> chat}}

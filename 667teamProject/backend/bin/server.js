@@ -45,6 +45,7 @@ io.on('connection', function(socket) {
     const new_message = {
       context: message,
       user_id: user.id,
+      user_name: user.username,
     };
     db.MESSAGE.create(new_message)
       .then((message) => {
@@ -104,6 +105,12 @@ io.on('connection', function(socket) {
   }
   );
 
+  socket.on('game-created', (game) => {
+    console.log('Game create');
+    socket.emit('update-game-list');
+  }
+  );
+
   socket.on('game-leave', (user) => {
     socket.broadcast.emit('game-user-disconnected', user);
   }
@@ -115,27 +122,6 @@ io.on('connection', function(socket) {
   );
   socket.on('game-end', (user) => {
     socket.broadcast.emit('game-end', user);
-  }
-  );
-  socket.on('create-game', (game) => {
-    db.GAME.create({
-      gameStatus: 'waiting',
-      maxPlayers: game.maxPlayers,
-      gameName: game.gameName,
-      gameHost: game.gameHost,
-      gameHostId: game.gameHostId,
-      gamePassword: game.gamePassword,
-  }
-  )
-  .then((new_game) => {
-    socket.emit('game-created', new_game);
-    return new_game;
-  }
-  )
-  .catch((err) => {
-    console.log(err);
-  }
-  );
   }
   );
   

@@ -37,6 +37,23 @@ const GameService = {
     });
   },
 
+  async getLobbyGameList(db) {
+    return await db.GAME.findAll({
+      where: {
+        gameStatus: 'waiting',
+      },
+    });
+  },
+
+  async getGameId(db, game) {
+    return await db.GAME.findOne({
+      where: {
+        gameName: game.gameName,
+        gameHostId: game.gameHostId,
+      },
+    });
+  },
+
 };
 
 module.exports = GameService;

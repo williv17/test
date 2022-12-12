@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      user_name : {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       context: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -28,9 +32,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       updatedAt: {
         allowNull: false,
-        type: DataTypes.DATE,
-      },
-      deletedAt: {
         type: DataTypes.DATE,
       },
     },

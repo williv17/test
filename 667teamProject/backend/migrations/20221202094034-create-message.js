@@ -15,14 +15,11 @@ module.exports = {
       user_id: {
         type: Sequelize.INTEGER
       },
-      context: {
+      user_name: {
         type: Sequelize.STRING
       },
-      createdAt: {
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        type: Sequelize.DATE
+      context: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
