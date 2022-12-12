@@ -10,6 +10,12 @@
                 </div>
                 <div>
                   {{> chat}}
+                  <button type="button" onclick="createGame(event)">Create Game</button>
+                  <script src="js/gameDriver.js" language="javascript"></script>
+                </div>
+                <div class="pending-games-container">
+                    <ul class="game-list" id="game-list">
+                    </ul>
                 </div>
             </div>
 </div>

@@ -3,7 +3,6 @@ const AuthService = require('../services/auth/auth-service.js');
 
 const registerUser = async (req, res, next) => {
   const { password, username, email } = req.body;
-  // console.log(req.body);
   for (const field of ['email', 'username', 'password'])
     if (!req.body[field]) return res.status(400).send('missing field');
 
@@ -13,7 +12,6 @@ const registerUser = async (req, res, next) => {
         return res.status(400).send('username already taken');
       }
 
-      console.log("I made it here");
       await UserService.hashPassword(password).then(async (hashedPassword) => {
         const newUser = {
           username,
@@ -112,7 +110,8 @@ const getUserWithAccessToken = async (req, res, next) => {
         if (!user) {
           return res.status(401).json({ error: 'Unauthorized request' });
         }
-        return res.status(200).send(user);
+        const { id, username, email } = user;
+        return res.status(200).send({id, username, email});
       }
     );
   } catch (error) {

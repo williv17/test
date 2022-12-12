@@ -7,11 +7,12 @@ const homeRouter = require('./home.js');
 const loginRouter = require('./login.js');
 const registerRouter = require('./register.js');
 const lobbyRouter = require('./lobby.js');
+const gameRouter = require('./game');
 
 /* GET home page. */
 
 mainRouter.use('/', homeRouter);
-mainRouter.use('/info', infoRouter);
+// mainRouter.use('/info', infoRouter);
 mainRouter.use('/rules', rulesRouter);
 mainRouter.use('/api', controllerRouter);
 mainRouter.use('/login', loginRouter);

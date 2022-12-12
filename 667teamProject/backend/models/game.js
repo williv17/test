@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Game extends Model {
     static associate(models) {
@@ -12,6 +10,24 @@ module.exports = (sequelize, DataTypes) => {
   }
   Game.init(
     {
+      gameName: {
+        type: DataTypes.STRING,
+      },
+      gamePassword: {
+        type: DataTypes.STRING,
+      },
+      gameHost: {
+        type: DataTypes.STRING,
+      },
+      gameHostId: {
+        type: DataTypes.INTEGER,
+      },
+      maxPlayers: {
+        type: DataTypes.INTEGER,
+      },
+      gameStatus: {
+        type: DataTypes.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,

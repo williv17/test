@@ -27,7 +27,7 @@ const registerPartial = (partialName, partialPath) => {
 const renderPage = (response, templatePath, doc_body) => {
 
   const access_token = response.access_token;
-  const user = response.user;
+  const game_state = response.game_state;
   const home_temp_str = fs.readFileSync(
     path.join(__dirname, templatePath),
     'utf8'
@@ -45,6 +45,7 @@ const renderPage = (response, templatePath, doc_body) => {
   const html = template({
     body: doc_body,
     access_token: access_token,
+    game_state: game_state,
   });
 
 

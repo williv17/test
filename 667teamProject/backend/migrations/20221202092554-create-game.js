@@ -9,6 +9,25 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      gameName: {
+        type: Sequelize.STRING
+      },
+      gamePassword: {
+        type: Sequelize.STRING
+      },
+      gameHost: {
+        type: Sequelize.STRING
+      },
+      gameHostId: {
+        type: Sequelize.INTEGER
+      },
+      maxPlayers: {
+        type: Sequelize.INTEGER
+      },
+      gameStatus: {
+        type: Sequelize.STRING
+      },
+
       createdAt: {
         type: Sequelize.DATE
       },
