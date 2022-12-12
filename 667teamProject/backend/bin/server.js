@@ -41,10 +41,22 @@ io.on('connection', function(socket) {
     delete users[socket.id];
   });
   socket.on('send-chat-message', (message) => {
-    socket.broadcast.emit('chat-message', {
-      message: message,
-      name: users[socket.id].username,
-    });
+    const user = users[socket.id];
+    const new_message = {
+      context: message,
+      user_id: user.id,
+    };
+    db.MESSAGE.create(new_message)
+      .then((message) => {
+        console.log('Message created');
+        socket.broadcast.emit('chat-message', {
+          message: message,
+          name: users[socket.id].username,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
 
   socket.on('lobby-join', (user) => {
@@ -105,8 +117,29 @@ io.on('connection', function(socket) {
     socket.broadcast.emit('game-end', user);
   }
   );
+  socket.on('create-game', (game) => {
+    db.GAME.create({
+      gameStatus: 'waiting',
+      maxPlayers: game.maxPlayers,
+      gameName: game.gameName,
+      gameHost: game.gameHost,
+      gameHostId: game.gameHostId,
+      gamePassword: game.gamePassword,
+  }
+  )
+  .then((new_game) => {
+    socket.emit('game-created', new_game);
+    return new_game;
+  }
+  )
+  .catch((err) => {
+    console.log(err);
+  }
+  );
+  }
+  );
+  
 });
-
 /**
  * Normalize a port into a number, string, or false.
  */

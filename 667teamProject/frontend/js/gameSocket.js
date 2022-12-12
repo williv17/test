@@ -156,6 +156,11 @@ game_socket.on('game-end', (data) => {
   console.log(`${data.name}: ${data.message}`);
 });
 
+game_socket.on('game-created', (game) => {
+  console.log("Game created");
+  console.log(game);
+});
+
 game_socket.on('game-ready', (game) => {
   console.log("Game is ready");
   console.log(game);
