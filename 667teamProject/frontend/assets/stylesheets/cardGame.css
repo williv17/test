@@ -18,10 +18,11 @@ html {
 
 #leftPlayerOneCardOne, #leftPlayerOneCardOne > img {
   height: 20px; 
-
+display: flex;
   position: relative;
   margin-left: 100px;
   margin-top: 100px;
+  
 }
 
 #leftPlayerOneCardOne > div > img {
@@ -30,6 +31,7 @@ html {
   position: relative;
   margin-left: -12px;
   margin-top: 100px;
+  display: inline-block;
 }
 
 #leftPlayerOneCardTwo > div > img {
@@ -38,6 +40,7 @@ html {
   position: relative;
   margin-left: 100px;
   margin-top: 100px;
+  display: inline-block;
 }
 
 #leftPlayerOneCardThree > div > img {
@@ -46,6 +49,7 @@ html {
   position: relative;
   margin-left: 100px;
   margin-top: -100px;
+  display: inline-block;
 }
 
 #leftPlayerOneCardFour > div > img {
@@ -54,6 +58,7 @@ html {
   position: relative;
   margin-left: 100px;
   margin-top: -100px;
+  display: inline-block;
 }
 
 #leftPlayerOneCardFive > div > img {
@@ -62,6 +67,7 @@ html {
   position: relative;
   margin-left: 100px;
   margin-top: -100px;
+  display: inline-block;
 }
 
 #leftPlayerOneCardSix > div > img {
@@ -70,6 +76,7 @@ html {
   position: relative;
   margin-left: 100px;
   margin-top: -100px;
+  display: inline-block;
 }
 
 #leftPlayerOneCardSeven> div > img {
@@ -78,6 +85,7 @@ html {
   position: relative;
   margin-left: 100px;
   margin-top: -100px;
+  display: inline-block;
 }
 
 #leftPlayerOneCardEight > div > img {
@@ -86,6 +94,7 @@ html {
   position: relative;
   margin-left: 100px;
   margin-top: -100px;
+  display: inline-block;
 }
 
 #leftPlayerOneCardNine > div > img {
@@ -94,6 +103,7 @@ html {
   position: relative;
   margin-left: 100px;
   margin-top: -100px;
+  display: inline-block;
 }
 
 #leftPlayerOneCardTen > div > img {
@@ -102,6 +112,7 @@ html {
   position: relative;
   margin-left: 100px;
   margin-top: -100px;
+  display: inline-block;
 }
 
 #playerNumberOne > div {
@@ -109,7 +120,8 @@ html {
   width: 50px;
   position: relative;
   margin-left: 80px;
-  margin-top: 10px;
+  margin-top: 10px;  
+  display: inline-block;
 }
 
 /* End Of Player Number One Hand */
@@ -129,6 +141,7 @@ html {
   position: relative;
   margin-left: 600px;
   margin-bottom: -700px;
+  
 }
 
 #topPlayerTwoCardOne > div > img {
@@ -137,6 +150,7 @@ html {
   position: relative;
   margin-left: 160px;
   margin-top: -1090px;
+  display: inline-block;
 }
 
 #topPlayerTwoCardTwo > div > img {
@@ -145,6 +159,7 @@ html {
   position: relative;
   margin-left: 600px;
   margin-top: 100px;
+  display: inline-block;
 }
 
 #topPlayerTwoCardThree > div > img {
@@ -153,6 +168,7 @@ html {
   position: relative;
   margin-left: 610px;
   margin-top: -130px;
+  display: inline-block;
 }
 
 #topPlayerTwoCardFour > div > img {
@@ -161,6 +177,7 @@ html {
   position: relative;
   margin-left: 625px;
   margin-top: -178px;
+  display: inline-block;
 }
 
 #topPlayerTwoCardFive > div > img {
@@ -169,6 +186,7 @@ html {
   position: relative;
   margin-left: 645px;
   margin-top: -225px;
+  display: inline-block;
 }
 
 #topPlayerTwoCardSix > div > img {
@@ -177,6 +195,7 @@ html {
   position: relative;
   margin-left: 665px;
   margin-top: -275px;
+  display: inline-block;
 }
 
 #topPlayerTwoCardSeven > div > img {
@@ -185,6 +204,7 @@ html {
   position: relative;
   margin-left: 685px;
   margin-top: -323px;
+  display: inline-block;
 }
 
 #topPlayerTwoCardEight > div > img {
@@ -193,6 +213,7 @@ html {
   position: relative;
   margin-left: 705px;
   margin-top: -370px;
+  display: inline-block;
 }
 
 #topPlayerTwoCardNine > div > img {
@@ -201,6 +222,7 @@ html {
   position: relative;
   margin-left: 730px;
   margin-top: -418px;
+  display: inline-block;
 }
 
 #topPlayerTwoCardTen > div > img {
@@ -209,6 +231,7 @@ html {
   position: relative;
   margin-left: 750px;
   margin-top: -467px;
+  display: inline-block;
 }
 
 #playerNumberTwo> div {
@@ -217,6 +240,7 @@ html {
   position: relative;
   margin-left: 665px;
   margin-top: -170px;
+  display: inline-block;
 }
 
 /* Center Cards on Table */
@@ -228,6 +252,13 @@ html {
   position: relative;
   margin-left: 650px;
   margin-top: -600px;
+  display: inline-block;
+}
+
+
+.move:hover{
+  transform: scale(1.5);
+  transition: bottom 10s ease;
 }
 
 
@@ -237,6 +268,7 @@ html {
   position: relative;
   margin-left: 730px;
   margin-top: -650px;
+  display: inline-block;
 }
 
 /* //////////////////////////////// */
@@ -245,10 +277,12 @@ html {
 
 #rightPlayerThreeCardOne, #rightPlayerThreeCardOne > img {
   height: 20px; 
-
+  display: flex;
   position: relative;
   margin-left: 187px;
   margin-top: -1070px;
+ 
+
 }
 
 #rightPlayerThreeCardOne > div > img {
@@ -257,14 +291,16 @@ html {
   position: relative;
   margin-left: 900px;
   margin-top: 600px;
+  display: inline-block;
 }
 
 #rightPlayerThreeCardTwo > div > img {
   height: 100px; 
   width: 50px;
-  position: relative;
   margin-left: 1100px;
   margin-top: 600px;
+  display: inline-block;
+  
 }
 
 #rightPlayerThreeCardThree > div > img {
@@ -273,6 +309,7 @@ html {
   position: relative;
   margin-left: 1100px;
   margin-top: -100px;
+  display: inline-block;
 }
 
 #rightPlayerThreeCardFour > div > img {
@@ -281,6 +318,7 @@ html {
   position: relative;
   margin-left: 1100px;
   margin-top: -120px;
+  display: inline-block;
 }
 
 #rightPlayerThreeCardFive > div > img {
@@ -289,6 +327,7 @@ html {
   position: relative;
   margin-left: 1100px;
   margin-top: -130px;
+  display: inline-block;
 }
 
 #rightPlayerThreeCardSix > div > img {
@@ -297,6 +336,7 @@ html {
   position: relative;
   margin-left: 1100px;
   margin-top: -130px;
+  display: inline-block;
 }
 
 #rightPlayerThreeCardSeven > div > img {
@@ -305,6 +345,7 @@ html {
   position: relative;
   margin-left: 1100px;
   margin-top: -130px;
+  display: inline-block;
 }
 
 #rightPlayerThreeCardEight > div > img {
@@ -313,6 +354,7 @@ html {
   position: relative;
   margin-left: 1100px;
   margin-top: -128px;
+  display: inline-block;
 }
 
 #rightPlayerThreeCardNine > div > img {
@@ -321,6 +363,7 @@ html {
   position: relative;
   margin-left: 1100px;
   margin-top: -125px;
+  display: inline-block;
 }
 
 #rightPlayerThreeCardTen > div > img {
@@ -329,6 +372,7 @@ html {
   position: relative;
   margin-left: 1100px;
   margin-top: -140px;
+  display: inline-block;
 }
 
 #playerNumberThree> div {
@@ -337,6 +381,7 @@ html {
   position: relative;
   margin-left: 1075px;
   margin-top: -80;
+  display: inline-block;
 }
 
 
@@ -344,9 +389,9 @@ html {
 
 #bottomPlayerFourCardOne, #bottomPlayerFourCardOne > img {
   height: 20px; 
-
+  display: inline-block;
   position: relative;
- 
+  display: inline-block;
   
 }
 
@@ -355,7 +400,8 @@ html {
   width: 50px;
   position: relative;
   margin-left: 600px;
-  margin-top: -50px;
+  margin-top: -20px;
+  display: inline-block;
 }
 
 #bottomPlayerFourCardTwo > div > img {
@@ -364,6 +410,7 @@ html {
   position: relative;
   margin-left: 613px;
   margin-top: -70px;
+  display: inline-block;
 }
 
 #bottomPlayerFourCardThree > div > img {
@@ -372,6 +419,7 @@ html {
   position: relative;
   margin-left: 625px;
   margin-top: -130px;
+  display: inline-block;
 }
 
 #bottomPlayerFourCardFour > div > img {
@@ -380,6 +428,7 @@ html {
   position: relative;
   margin-left: 645px;
   margin-top: -178px;
+  display: inline-block;
 }
 
 #bottomPlayerFourCardFive > div > img {
@@ -388,6 +437,7 @@ html {
   position: relative;
   margin-left: 665px;
   margin-top: -226px;
+  display: inline-block;
 }
 
 #bottomPlayerFourCardSix > div > img {
@@ -396,6 +446,7 @@ html {
   position: relative;
   margin-left: 678px;
   margin-top: -275px;
+  display: inline-block;
 }
 
 #bottomPlayerFourCardSeven > div > img {
@@ -404,6 +455,7 @@ html {
   position: relative;
   margin-left: 700px;
   margin-top: -322px;
+  display: inline-block;
 }
 
 #bottomPlayerFourCardEight > div > img {
@@ -412,6 +464,7 @@ html {
   position: relative;
   margin-left: 725px;
   margin-top: -370px;
+  display: inline-block;
 }
 
 #bottomPlayerFourCardNine > div > img {
@@ -420,6 +473,7 @@ html {
   position: relative;
   margin-left: 740px;
   margin-top: -418px;
+  display: inline-block;
 }
 
 #bottomPlayerFourCardTen > div > img {
@@ -428,7 +482,34 @@ html {
   position: relative;
   margin-left: 760px;
   margin-top: -466px;
+  display: inline-block;
 }
+
+
+/* #bottomPlayerFourCardNine > div > img:hover {
+  height: 100px; 
+  width: 50px;
+  position: relative;
+  margin-left: 740px;
+  margin-top: -418px;
+  bottom: 50%;
+  color: #fff;
+  height: 100%;
+  transition: left 10s ease;
+}
+
+
+#bottomPlayerFourCardTen > div > img:hover {
+  height: 200px; 
+  width: 50px;
+  position: relative;
+  margin-left: 760px;
+  margin-top: -466px;
+  bottom: 50%;
+  color: #fff;
+  height: 100%;
+  transition: top 10s ease;
+} */
 
 #playerNumberFour> div {
   height: 100px; 
@@ -436,6 +517,18 @@ html {
   position: relative;
   margin-left: 640px;
   margin-top: -80px;
+  display: inline-block;
+}
+
+
+
+
+
+
+.zoom:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.5);
+  transition: top 10s ease;
 }
 
 
@@ -453,3 +546,14 @@ margin-top: -800px;
   padding-top: 25px;
   margin-top: 570px;
 }
+
+#main-wrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin-left: 0px;
+  margin-top: 0px;
+  
+ 
+}
+
