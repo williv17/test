@@ -11,6 +11,8 @@ const Database = require('../models');
 const db = Database.Connect();
 const socket = require('socket.io');
 const users = {};
+const game_users = {};
+const client_rooms = {};
 
 
 
@@ -48,6 +50,59 @@ io.on('connection', function(socket) {
   socket.on('lobby-join', (user) => {
     users[socket.id] = user;
     socket.broadcast.emit('user-connected', user);
+  }
+  );
+
+  socket.on('game-join', (user, game_id) => {
+    console.log('Game join');
+    const game_user_count = db.GAME_USER.count({
+      where: {
+        game_id: game_id,
+      },
+    });
+    const game = db.GAME.findOne({
+      where: {
+        id: game_id,
+      },
+    })
+    .then((game) => {
+      game_user_count
+      .then((game_user_count) => {    
+        if (game_user_count === game.maxPlayers) {
+          console.log('Game is full');
+          game.set({
+            gameStatus: 'ready',
+          });
+          game.save();
+          socket.emit('game-ready', game);
+        } else {
+          console.log('Game is not full');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    game_users[socket.id] = user;
+    socket.broadcast.emit('game-user-connected', user);
+    }
+    )
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+  );
+
+  socket.on('game-leave', (user) => {
+    socket.broadcast.emit('game-user-disconnected', user);
+  }
+  );
+
+  socket.on('game-start', (user) => {
+    socket.broadcast.emit('game-start', user);
+  }
+  );
+  socket.on('game-end', (user) => {
+    socket.broadcast.emit('game-end', user);
   }
   );
 });
