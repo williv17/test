@@ -5,7 +5,7 @@
  grid-template-areas: 
  "header header"
  "body body"
- "chat"
+ "chat chat"
  "footer footer"
 }
 
@@ -16,6 +16,9 @@
 }
 
 .lobby-body-container{
+ width:700px;
+ text-align: center;
+ margin:auto;
  grid-area: body;
 }
 
@@ -25,6 +28,7 @@
 
 .chat-container{
  grid-area: chat;
+ position:relative;
 }
 
 #button-container{
