@@ -1,15 +1,30 @@
-<div>
-    <div class="container-fluid w-100">
-        <div class="row h-80 align-items-center ">
-            <div class="col-lg-12 ">
+<div class="lobby-container">
+    <div class="bg-image" style="background-image: url('https://cdn.pixabay.com/photo/2021/05/18/02/59/uno-6262204_1280.jpg');
+                height: 122vh;">
+        <div class="lobby-header">
+            <h1>Team RYWL's Uno Game</h1>
+        </div>
+        <div class="lobby-body-container">
+            <div id="button-container">
+                <button type="submit" id="lobby-button"><i class="fas fa-paper-plane"></i>Start Game</button>
             </div>
-            <div class="bg-image" style="background-image: url('https://cdn.pixabay.com/photo/2021/05/18/02/59/uno-6262204_1280.jpg');
-                height: 100vh">
-                <div class="text-white">
-                    <h1 class="display-4 text-center text-muted bold fst-italic m-4">Team RYWL's Uno Game</h1>
-                </div>
-                <div>
-                  {{> chat}}
-                </div>
+            <br>
+            <form class="create-game-container">
+                <input id="game-name" type="text" placeholder="Game Name..." required autocomplete="off"
+                    class="p-3 border-none bg-white " />
+                <input id="game-pwd" type="text" placeholder="Game password..." required autocomplete="off"
+                    class="p-3 border-none bg-white " />
+                <input id="max-players" type="text" placeholder="Max Players..." required autocomplete="off"
+                    class="p-3 border-none bg-white " />
+                <button type="submit" id="lobby-button"><i class="fas fa-paper-plane"></i>Create Game</button>
+            </form>
+            <h1 class="lobby-header">Current Games</h1>
+            <div class="games-container">
+
             </div>
+        </div>
+        <div>
+            {{> chat}}
+        </div>
+    </div>
 </div>

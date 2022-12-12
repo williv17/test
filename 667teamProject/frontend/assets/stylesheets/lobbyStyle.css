@@ -1,0 +1,66 @@
+.lobby-container{
+ display:grid;
+ grid-template-rows: 200px 200px 400px 200px;
+ grid-template-columns: 1fr;
+ grid-template-areas: 
+ "header header"
+ "body body"
+ "chat"
+ "footer footer"
+}
+
+.lobby-header{
+ text-align: center;
+ color:white;
+ grid-area: header;
+}
+
+.lobby-body-container{
+ grid-area: body;
+}
+
+.footer-container{
+ grid-area: footer
+}
+
+.chat-container{
+ grid-area: chat;
+}
+
+#button-container{
+ text-align: center;
+}
+
+#lobby-button {
+ width: auto;
+ padding: 10px;
+ background: white;
+ color: black;
+ font-size: 15px;
+ border-left: none;
+ cursor: pointer;
+ font-size: 20px;
+}
+
+#lobby-button:hover {
+ background: #0ca8d7;
+}
+
+.games-container{
+ height: 200px;
+ overflow-x:hidden;
+ overflow-y: auto;
+ display: flex;
+ flex-flow: column-reverse nowrap;
+ scroll-behavior: smooth;
+ margin-left: 3px;
+ margin-top: 3px;
+ border: 1px solid #cccccc;
+ box-shadow: -2px 2px 4px 4px #000000;
+ border-radius: .35rem;
+ color:white;
+}
+
+.create-game-container{
+ text-align: center;
+}
