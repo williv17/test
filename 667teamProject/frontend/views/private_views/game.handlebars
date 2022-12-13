@@ -1,74 +1,206 @@
-<body class='bg'>
-  <link rel='stylesheet' href='/assets/stylesheets/cardGame.css' />
-  <script defer src='/js/gameSocket.js'></script>
-  {{#ifEquals game_state 'ready'}}
-    <div>
-      <button type="button" onclick="initGame(event)">
-        START GAME
-      </button>
-    </div>
-  {{/ifEquals}}
+<body class="bg">
+    <link rel="stylesheet" href="/assets/stylesheets/cardGame.css">
+    <!-- Player Number 10 cards -->
 
-  <div id="deck-container">
+    <link rel="stylesheet" href="/assets/stylesheets/cardGame.css">
 
-  </div>
-
-  <div class='chat col-sm-3 flex-column bg-dark' id='chatbox'>
-    <div class='titleOfChatBox container bg-dark pt-2 pb-2'>
-      <div class='row'>
-        <div class='chat-title col h3 mt-1 text-center text-warning'>Game Chat</div>
-        <div class='chatbox'></div>
-        <div class='chat-message-box container bg-dark mb-2'>
-          <form>
-            <div class='input-group'><input
-                class='form-control'
-                id='userInput'
-                type='text'
-              /><button
-                class='btn bg-success text-white'
-                classname='ChatSendButton'
-                id='sendChat-btn'
-                type='submit'
-              >
-                Send
-              </button></div>
-          </form>
-        </div>
+    <script defer src='/js/gameSocket.js'></script>
+    {{#ifEquals game_state 'ready'}}
+      <div>
+        <button type="button" onclick="initGame(event)">
+          START GAME
+        </button>
       </div>
-    </div>
-  </div>
+    {{/ifEquals}}
 
-    {{! ///////////////////////////////////////////////////////
-        ///////////////////CHAT SECTION ///////////////////////
-        /////////////////////////////////////////////////////// }}
+    <div class="container" classname="main-container">
 
-  <div class='chat col-sm-3 flex-column bg-dark' id='chatbox'>
-    <div class='titleOfChatBox container bg-dark pt-2 pb-2'>
-      <div class='row'>
-        <div class='chat-title col h3 mt-1 text-center text-warning'>Game Chat</div>
-        <div class='chatbox'></div>
-        <div class='chat-message-box container bg-dark mb-2'>
-          <form>
-            <div class='input-group'><input
-                class='form-control'
-                id='userInput'
-                type='text'
-              /><button
-                class='btn bg-success text-white'
-                classname='ChatSendButton'
-                id='sendChat-btn'
-                type='submit'
-              >
-                Send
-              </button></div>
-          </form>
+        <!-- TOP CARDS -->
+        <div class="row"> <!-- Total: 12 -->
+            <div class="col-4"></div>
+            <div class="col-4">
+                <div class="outer">
+                     <div class="one">
+                        <div class="row " classname="move" id="topPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="one">
+                        <div class="row " classname="move" id="topPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="two">
+                        <div class="row " classname="move" id="topPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="three">
+                        <div class="row " classname="move" id="topPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="three">
+                        <div class="row " classname="move" id="topPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="text-white h3" classname="playerNamTop">
+                        PLAYER {{playerNumber}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-4"></div>
         </div>
-      </div>
-    </div><button class='btn btn-default open-chat' id='chat-open-btn'><i
-        class='fa fa-chevron-left'
-      ></i></button>
-  </div>
+        <!-- LEFT CARDS -->
+        <div class="row"> <!-- Total: 11 -->
+            <div class="col-4">
+                <div class="outer">
+                    <div class="one">
+                        <div class="row " classname="move" id="leftPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="two">
+                        <div class="row " classname="move" id="leftPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="three">
+                        <div class="row " classname="move" id="leftPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="three">
+                        <div class="row " classname="move" id="leftPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="three">
+                        <div class="row " classname="move" id="leftPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="text-white h3" classname="playerNameLeft">
+                        PLAYER {{playerNumber}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <!-- CENTER CARDS -->
+                <div class="outer">
+                    <div class="two">
+                        <div class="row " classname="move" id="centerDeck">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="three">
+                        <div class="row " classname="move" id="centerDeckDown">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">3 of 3</div>
+        </div>
+        <div class="row"> <!-- Total: 13 -->
+            <div class="col-4"></div>
+            <!-- BOTTOM CARDS -->
+            <div class="col-4">
+                <div class="outer">
+                    <div class="one">
+                        <div class="row " classname="move" id="bottomPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="two">
+                        <div class="row " classname="move" id="bottomPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="three">
+                        <div class="row " classname="move" id="bottomPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                      <div class="three">
+                        <div class="row " classname="move" id="bottomPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                      <div class="three">
+                        <div class="row " classname="move" id="bottomPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="text-white h3" classname="playerNameBottom">
+                        PLAYER {{playerNumber}}
+                    </div>
+                </div>
+            </div>
+            <!-- RIGHT CARDS -->
+            <div class="col-4">
+                <div class="outer">
+                    <div class="one">
+                        <div class="row " classname="move" id="rightPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="two">
+                        <div class="row " classname="move" id="rightPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="three">
+                        <div class="row " classname="move" id="rightPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="three">
+                        <div class="row " classname="move" id="rightPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="three">
+                        <div class="row " classname="move" id="rightPlayer">
+                            <img src="../assets/images/unoCard.jpg" class="zoom" alt="missingCard">
+                        </div>
+                    </div>
+                    <div class="text-white h3" classname="playerNameRight">
+                        PLAYER {{playerNumber}}
+                    </div>
+                </div></div>
+        </div>
+    </div>
+</body>
 
-  </div>
+    <!-- Cards 1-10 -->
+
+    <!-- ///////////////////////////////////////////////////////
+    ///////////////////CHAT SECTION ///////////////////////
+    /////////////////////////////////////////////////////// -->
+
+
+
+    </div>
+    <div class="chat col-sm-3 flex-column bg-dark" id="chatbox">
+        <div class="titleOfChatBox container bg-dark pt-2 pb-2">
+            <div class="row">
+                <div class="chat-title col h3 mt-1 text-center text-warning">Game Chat</div>
+                <div class="chatbox" id="messages"></div>
+                <div class="chat-message-box container bg-dark mb-2">
+                    <form id="game-chat-form">
+                        <div class="input-group"><input class="form-control" id="userInput" type="text" /><button
+                                class="btn bg-success text-white" classname="ChatSendButton" id="sendChat-btn"
+                                type="submit">
+                                Send </button></div>
+                    </form>
+                </div>
+            </div>
+        </div><button class="btn btn-default open-chat" id="chat-open-btn"><i class="fa fa-chevron-left"></i></button>
+    </div>
+
+
+
 
 </body>

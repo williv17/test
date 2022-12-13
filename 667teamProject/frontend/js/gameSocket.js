@@ -1,4 +1,26 @@
 let game_socket = io("localhost:3000");
+const gameChatForm = document.getElementById('game-chat-form');
+const gameChatInput = document.getElementById('userInput');
+const game_id = window.location.pathname.split('/')[2];
+
+gameChatForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const message = gameChatInput.value;
+  game_socket.emit('send-game-chat-message', ({game_id, message}));
+  const game_message_list = getGameMessageList();
+  appendGameMessageList(message_list);
+  gameChatInput.value = '';
+});
+
+async function appendGameMessageList(message_list) {
+  const messageContainer = document.getElementById('messages');
+  messageContainer.innerHTML = '';
+  message_list.forEach((message) => {
+    const messageElement = document.createElement('div');
+    messageElement.innerText = message.message;
+    messageContainer.append(messageElement);
+  });
+}
 
 async function getUser() {
   const user = await fetch('/api/user', {
@@ -49,6 +71,23 @@ async function getGameUserCount(game_id) {
   return count;
 }
 
+async function getGameMessageList(game_id) {
+  const message_list = await fetch(`/api/game-message-list/${game_id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log('message list');
+      console.log(data[0]);
+      return data;
+    });
+  return message_list;
+}
+
 async function createGameUser(game_id, user) {
   console.log(user);
   const game_user = await fetch('/api/game-user', {
@@ -65,6 +104,14 @@ async function createGameUser(game_id, user) {
       return data;
     });
   return game_user;
+}
+
+async function appendConnectionMessage(message) {
+  const messageContainer = document.getElementById('messages');
+  const messageElement = document.createElement('div');
+  messageElement.classList.add('text-white');
+  messageElement.innerText = message;
+  messageContainer.prepend(messageElement);
 }
 
 async function getGameUser(game_id, user_id) {
@@ -187,10 +234,23 @@ game_socket.on('game-leave', (user) => {
   console.log(`${user.username} disconnected`);
 });
 
-game_socket.on('game-message', (data) => {
-  console.log(`${data.name}: ${data.message}`);
+game_socket.on('game-user-connected', (user) => {
+  appendConnectionMessage(`${user.username} connected`);
 });
 
+game_socket.on('game-chat-message', (data) => {
+  const messageList = getGameMessageList(data.message.game_id);
+  appendGameMessageList(messageList);
+});
+
+game_socket.on('game-user-disconnected', (user) => {
+  try {
+    console.log(user);
+    appendConnectionMessage(`${user.username} disconnected`);
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 game_socket.on('game-end', (data) => {
   console.log(`${data.name}: ${data.message}`);

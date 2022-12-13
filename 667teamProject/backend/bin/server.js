@@ -61,6 +61,28 @@ io.on('connection', function(socket) {
       });
   });
 
+  socket.on('send-game-chat-message', (message) => {
+
+    const user = game_users[socket.id];
+    const new_message = {
+      context: message.message,
+      user_id: user.id,
+      user_name: user.username,
+      game_id: message.game_id,
+    };
+    db.MESSAGE.create(new_message)
+      .then((message) => {
+        console.log('Message created');
+        socket.broadcast.emit('game-chat-message', {
+          message: message,
+          name: game_users[socket.id].username,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
   socket.on('lobby-join', (user) => {
     users[socket.id] = user;
     socket.broadcast.emit('user-connected', user);

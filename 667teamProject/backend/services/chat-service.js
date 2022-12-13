@@ -9,11 +9,18 @@ const ChatService = {
     });
   },
   async getGameMessageList(db, gameId) {
-  return await db.MESSAGE.findAll({
-    where: {
-      game_id: gameId,
-    },
-  });
+    try {
+      const message = await db.MESSAGE.findAll({
+        where: {
+          game_id: gameId,
+        },
+        limit: 10,
+        order: [['id', 'DESC']],
+      });
+      return message;
+    } catch (error) {
+      console.log(error);
+    }
   },
 }
 

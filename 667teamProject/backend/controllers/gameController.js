@@ -238,7 +238,6 @@ const getGameId = async (request, response, next) => {
   return game_id;
 };
 
-
 module.exports = {
   createGame,
   renderGame,

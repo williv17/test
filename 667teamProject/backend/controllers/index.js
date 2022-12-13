@@ -24,6 +24,7 @@ controllerRouter.get('/lobby-game-list', gameController.getLobbyGameList);
 controllerRouter.get('/game/:game_host/:game_host_id', gameController.getGameId);
 controllerRouter.get('/game-user-cards/:game_user_id/:game_id', gameController.getGameUserCards);
 controllerRouter.get('/game-user-cards/:game_id', gameController.getGameUsersCards);
-
+controllerRouter.get('/game-count/:game_id', gameController.getGameCount);
+controllerRouter.get('/game-message-list/:game_id', messageController.getGameMessageList);
 
 module.exports = controllerRouter;
