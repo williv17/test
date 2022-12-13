@@ -9,17 +9,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      value: {
-        type: Sequelize.STRING
-      },
       color: {
         type: Sequelize.STRING
       },
-      createdAT: {
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        type: Sequelize.DATE
+      value: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

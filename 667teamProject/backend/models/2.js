@@ -1,12 +1,14 @@
 'use strict';
-const { Model } = require('sequelize');
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Card extends Model {
-    // static associate(models) {
-    //   Card.hasMany(models.Game_Card, {
-    //     foreignKey: 'card_id',
-    //   });
-    // }
+    static associate(models) {
+      Card.hasMany(models.Game_Card, {
+        foreignKey: 'card_id',
+      });
+      }
   }
   Card.init(
     {
@@ -24,6 +26,9 @@ module.exports = (sequelize, DataTypes) => {
       },
       updatedAt: {
         allowNull: false,
+        type: DataTypes.DATE,
+      },
+      deletedAt: {
         type: DataTypes.DATE,
       },
     },

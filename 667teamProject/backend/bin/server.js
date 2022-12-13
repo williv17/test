@@ -13,6 +13,7 @@ const socket = require('socket.io');
 const users = {};
 const game_users = {};
 const client_rooms = {};
+const decks = {};
 
 
 
@@ -124,11 +125,94 @@ io.on('connection', function(socket) {
     socket.broadcast.emit('game-end', user);
   }
   );
-  
+
+  socket.on('initGame', (hostedGame) => {
+    console.log('Init game');
+    console.log(hostedGame);
+    const game = db.GAME.findOne({
+      where: {
+        id: hostedGame.game_id,
+      },
+    }).then((game) => {
+      console.log(game);
+      const cards = db.CARD.findAll({
+        where: {},
+      }).then((cards) => {
+        const game_cards = Promise.all(cards.map((card) => {
+          const game_card = db.GAME_CARD.create({
+            game_id: game.id,
+            card_id: card.id,
+            discarded: false,
+            in_deck: true,
+          });
+          return game_card;
+        }));
+        game_cards.then((game_cards) => {
+          console.log('Game cards created');
+          // console.log(game_cards);
+          const game_deck = [];
+          game_cards.forEach((game_card) => {
+            game_deck.push(game_card.id);
+          });
+          const game_deck_shuffle = game_deck.sort(() => Math.random() - 0.5);
+          decks[game.id] = game_deck_shuffle;
+          assignGameCards(game, game_deck_shuffle);
+          console.log(game_deck_shuffle);
+          socket.emit('game-start', game_deck_shuffle);
+        })
+        .catch((err) => {
+          console.log(err);
+        }
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      }
+      );
+    })
+    .catch((err) => {
+      console.log(err);
+    }
+    );
+
+  });
 });
-/**
- * Normalize a port into a number, string, or false.
- */
+
+function assignGameCards(game, deck) {
+  const init_card_count = 10;
+  const game_users = db.GAME_USER.findAll({
+    where: {
+      game_id: game.id,
+    },
+  });
+  game_users.then((game_users) => {
+    game_users.forEach((game_user) => {
+      for (let i = 0; i < init_card_count; i++) {
+        const game_card = deck[Math.floor(Math.random() * deck.length)];
+        // console.log("HERE");
+        // console.log(game_card);
+        try {
+          db.GAME_CARD.update({
+            user_id: game_user.id,
+            in_deck: false,
+          }, {
+            where: {
+              id: game_card,
+            },
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  }
+  );
+}
+
+
 
 function normalizePort(val) {
   var port = parseInt(val, 10);

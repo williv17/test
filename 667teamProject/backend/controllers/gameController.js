@@ -56,6 +56,50 @@ const renderGame = (request, response) => {
     });
 };
 
+const getGameUserCards = async (request, response, next) => {
+  const game_user = {
+    game_user_id: request.params.game_user_id,
+    game_id: request.params.game_id,
+  }
+  const game_user_cards = await GameService.getGameUserCards(
+    request.app.get('db'),
+    game_user
+  )
+    .then((game_user_cards) => {
+      if (!game_user_cards) {
+        return response.status(400).json({
+          error: { message: 'game_user_cards not found' },
+        });
+      }
+      response.game_user_cards = JSON.stringify(game_user_cards);
+      return response.status(201).json(game_user_cards);
+    })
+    .catch(next);
+
+  return game_user_cards;
+};
+
+const getGameUsersCards = async (request, response, next) => {
+  const game_id = request.params.game_id;
+  const game_users_cards = await GameService.getGameUsersCards(
+    request.app.get('db'),
+    game_id
+  )
+    .then((game_users_cards) => {
+      if (!game_users_cards) {
+        return response.status(400).json({
+          error: { message: 'game_users_cards not found' },
+        });
+      }
+      response.game_users_cards = JSON.stringify(game_users_cards);
+      return response.status(201).json(game_users_cards);
+    })
+    .catch(next);
+
+  return game_users_cards;
+};
+
+
 const createGame = async (request, response, next) => {
   const game = request.body;
   console.log(game);
@@ -204,4 +248,6 @@ module.exports = {
   getGameCount,
   getLobbyGameList,
   getGameId,
+  getGameUserCards,
+  getGameUsersCards,
 };

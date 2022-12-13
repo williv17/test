@@ -2,9 +2,9 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      'cards',
+      'Cards',
       [
         {
           color: 'red',
@@ -659,7 +659,7 @@ module.exports = {
     );
   },
 
-  async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('cards', null, {});
-  }
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('Cards', null, {});
+  },
 };

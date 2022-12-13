@@ -1,3 +1,5 @@
+const { Op } = require("sequelize");
+
 const GameService = {
   async insertGame(db, newGame) {
     return await db.GAME.create(newGame);
@@ -33,6 +35,27 @@ const GameService = {
     return await db.GAME_USER.count({
       where: {
         game_id: gameId,
+      },
+    });
+  },
+
+  async getGameUserCards(db, game_user) {
+    return await db.GAME_CARD.findAll({
+      where: {
+        game_id: game_user.game_id,
+        user_id: game_user.game_user_id,
+      },
+    });
+  },
+
+  async getGameUsersCards(db, game_id) {
+    console.log(game_id);
+    return await db.GAME_CARD.findAll({
+      where: {
+        game_id: game_id,
+        user_id: {
+          [Op.ne]: null,
+        }
       },
     });
   },

@@ -24,6 +24,19 @@ async function getGame(game_id) {
   return game;
 }
 
+async function initGame(event) {
+  event.preventDefault();
+  const game_id = window.location.pathname.split('/')[2];
+  const user = await getUser();
+  const game = await getGame(game_id);
+  if(game.gameHostId == user.id) {
+    console.log('host');
+    game_socket.emit('initGame', {game_id, user});
+  } else {
+    console.log('not host');
+  }
+}
+
 async function getGameUserCount(game_id) {
   const count = await fetch(`/api/game-count/${game_id}`, {
     method: 'GET',
@@ -135,6 +148,36 @@ const user = getUser()
     console.log(err);
   });
 
+game_socket.on('game-start', (deck) => {
+  const card_container = document.getElementById('deck-container');
+
+  const game_id = window.location.pathname.split('/')[2];
+  const user = getUser()
+    .then((user) => {
+      const user_cards = fetch(`/api/game-user-cards/${game_id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      }).then((res) => res.json())
+      .then((cards) => {
+        cards.forEach((card) => {
+          const card_div = document.createElement('div');
+          card_div.classList.add('card');
+
+          const card_img = document.createElement('img');
+          card_img.src = "../assets/images/blue0.png"
+          card_img.classList.add('card-img');
+
+          card_div.appendChild(card_img);
+          card_container.appendChild(card_div);
+        });
+      });
+    });
+  console.log('Game started');
+});
+
 
 game_socket.on('game-user-connected', (user) => {
   console.log(`${user.username} connected`);
@@ -148,9 +191,6 @@ game_socket.on('game-message', (data) => {
   console.log(`${data.name}: ${data.message}`);
 });
 
-game_socket.on('game-start', (data) => {
-  console.log(`${data.name}: ${data.message}`);
-});
 
 game_socket.on('game-end', (data) => {
   console.log(`${data.name}: ${data.message}`);

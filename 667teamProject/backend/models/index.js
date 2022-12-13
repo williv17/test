@@ -25,7 +25,7 @@ exports.Connect = () => {
     GAME: require('../models/game')(sequelize, Sequelize),
     GAME_USER: require('../models/game_user')(sequelize, Sequelize),
     GAME_CARD: require('../models/game_card')(sequelize, Sequelize),
-    CARD: require('../models/card')(sequelize, Sequelize),
+    CARD: require('./card')(sequelize, Sequelize),
     MESSAGE: require('../models/message')(sequelize, Sequelize),
     sequelize,
     Sequelize,
