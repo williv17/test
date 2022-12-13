@@ -1,3 +1,4 @@
+// Authenticate user credentials and create token
 async function handleLogin(event) {
   event.preventDefault();
   const email = document.querySelector('#email-login').value.trim();

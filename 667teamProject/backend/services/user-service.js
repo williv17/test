@@ -1,8 +1,13 @@
+//
+// Module Variables
+//
 const xss = require('xss');
 const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/;
 const bcrypt = require('bcryptjs');
 
-
+//
+// Validate user credentials and hash password
+//
 const UsersService = {
   async getUserWithUserName(db, username) {
     return await db.USER.findOne({ where: { username } });

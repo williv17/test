@@ -1,9 +1,14 @@
+//
+// Module Dependencies
+//
 const handlebar_service = require('../services/handlebar-service');
 const fs = require('fs');
 const path = require('path');
 const Handlebars = require('handlebars');
 const GameService = require('../services/game-service');
 
+
+// export to routes/games.js logic
 const renderGame = (request, response) => {
   const game_id = request.params.id;
   const game = GameService.getGame(request.app.get('db'), game_id)
@@ -194,6 +199,9 @@ const getGameId = async (request, response, next) => {
   return game_id;
 };
 
+//
+// export modules
+//
 
 module.exports = {
   createGame,

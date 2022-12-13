@@ -1,9 +1,15 @@
+//
+// Module Dendencies
+//
 var express = require('express');
 var homeRouter = express.Router();
 const fs = require('fs');
 const path = require('path');
 const Handlebars = require('handlebars');
 
+//
+// Home Page of App with Links to Navigation
+// 
 homeRouter.get('/', function (request, response, next) {
   let access_token;
   if (request.cookies) {

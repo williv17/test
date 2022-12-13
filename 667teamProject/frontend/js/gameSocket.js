@@ -1,5 +1,12 @@
+
+//
+// Module Dependencies
+//
 let game_socket = io("localhost:3000");
 
+//
+// monitor new user request and return user
+//
 async function getUser() {
   const user = await fetch('/api/user', {
     method: 'GET',
@@ -12,6 +19,9 @@ async function getUser() {
   return { username: user.username, id: user.id };
 }
 
+//
+// monitor new fetch and return game_id
+//
 async function getGame(game_id) {
   const game = await fetch(`/api/game/${game_id}`, {
     method: 'GET',
@@ -24,6 +34,9 @@ async function getGame(game_id) {
   return game;
 }
 
+//
+// return amount of users registered in the game
+//
 async function getGameUserCount(game_id) {
   const count = await fetch(`/api/game-count/${game_id}`, {
     method: 'GET',
@@ -36,6 +49,9 @@ async function getGameUserCount(game_id) {
   return count;
 }
 
+//
+// monitor request and create new GameUser
+//
 async function createGameUser(game_id, user) {
   console.log(user);
   const game_user = await fetch('/api/game-user', {
@@ -54,6 +70,9 @@ async function createGameUser(game_id, user) {
   return game_user;
 }
 
+//
+// monitor new request and return GameUses = to game_id and user_id
+//
 async function getGameUser(game_id, user_id) {
   const url = `/api/game-user/${game_id}/${user_id}`;
   const game_user = await fetch(url, {
@@ -82,6 +101,9 @@ async function getGameUser(game_id, user_id) {
   return game_user;
 }
 
+//
+// find user and max user cases 
+//
 const user = getUser()
   .then((user) => {
     console.log(user);
@@ -135,32 +157,47 @@ const user = getUser()
     console.log(err);
   });
 
-
+//
+// initiate socket and connect game user
+//
 game_socket.on('game-user-connected', (user) => {
   console.log(`${user.username} connected`);
 });
-
+//
+// initiate socket and leave game
+//
 game_socket.on('game-leave', (user) => {
   console.log(`${user.username} disconnected`);
 });
-
+//
+// initiate socket and get message
+//
 game_socket.on('game-message', (data) => {
   console.log(`${data.name}: ${data.message}`);
 });
-
+//
+// initiate socket and start game
+//
 game_socket.on('game-start', (data) => {
   console.log(`${data.name}: ${data.message}`);
 });
-
+//
+// initiate socket and end game
+//
 game_socket.on('game-end', (data) => {
   console.log(`${data.name}: ${data.message}`);
 });
-
+//
+// initiate socket and create game
+//
 game_socket.on('game-created', (game) => {
   console.log("Game created");
   console.log(game);
 });
 
+//
+// initiate socket and ready game
+//
 game_socket.on('game-ready', (game) => {
   console.log("Game is ready");
   console.log(game);

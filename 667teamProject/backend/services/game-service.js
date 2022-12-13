@@ -1,3 +1,6 @@
+//
+// create and return a newGame 
+//
 const GameService = {
   async insertGame(db, newGame) {
     return await db.GAME.create(newGame);
@@ -11,6 +14,9 @@ const GameService = {
     return await db.GAME_USER.create(newGameUser);
   },
 
+  //
+  // Look for new users to the game and add them to a new game
+  //
   async getGameUser(db, gameUser) {
     const { game_id, user_id } = gameUser;
     return await db.GAME_USER.findOne({
@@ -21,6 +27,9 @@ const GameService = {
     });
   },
 
+  //
+  // Look for new games and assign them a gaemID
+  //
   async getGame(db, gameId) {
     return await db.GAME.findOne({
       where: {
@@ -29,6 +38,9 @@ const GameService = {
     });
   },
   
+  //
+  // Get the game count
+  //
   async getGameCount(db, gameId) {
     return await db.GAME_USER.count({
       where: {
@@ -36,7 +48,9 @@ const GameService = {
       },
     });
   },
-
+//
+//  Get a list of all the Games
+//
   async getLobbyGameList(db) {
     return await db.GAME.findAll({
       where: {
@@ -45,6 +59,7 @@ const GameService = {
     });
   },
 
+  // find GameID of all games
   async getGameId(db, game) {
     return await db.GAME.findOne({
       where: {

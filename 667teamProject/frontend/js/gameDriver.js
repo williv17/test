@@ -1,3 +1,6 @@
+//
+// Await and catch new game fetch to return new_game
+//
 async function createGame(game) {
   const new_game = await fetch('/api/game', {
     method: 'post',

@@ -1,8 +1,13 @@
+//
+// Module Dependencies
+//
 var express = require('express');
 var gameRouter = express.Router();
 const gameController = require('../controllers/gameController.js');
 
 /* GET home page. */
+// 
+// Game page with messaging
 gameRouter.get('/:id', gameController.renderGame);
 
 gameRouter.get('/:id/:message', function (request, response, next) {

@@ -1,7 +1,13 @@
+//
+// Module Dependencies
+//
 var express = require('express');
 var router = express.Router();
 const db = require('../db/database'); 
 
+//
+// Test Page - .get handlebars from 'public_views'
+//
 router.get("/", (request, response) => {
   db.any(
       `INSERT INTO test_table ("testString") VALUES ('Hello at ${Date.now()}')`

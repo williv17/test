@@ -1,8 +1,15 @@
+//
+// Module Dependencies
+//
 const handlebar_service = require('../services/handlebar-service');
 const fs = require('fs');
 const path = require('path');
 const Handlebars = require('handlebars');
 
+
+//
+// Render Lobby & Chat 
+//
 const renderLobby = (request, response) => {
   let user;
   let access_token;
@@ -47,6 +54,9 @@ const renderLobby = (request, response) => {
     );
 };
 
+//
+// export module
+//
 module.exports = {
   renderLobby,
 };

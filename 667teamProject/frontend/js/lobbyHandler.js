@@ -1,3 +1,7 @@
+
+//
+// Module Dependencies
+//
 const socket = io('http://localhost:3000');
 const messageForm = document.getElementById('chat-box');
 const messageInput = document.getElementById('message-input');
@@ -10,6 +14,9 @@ const gameMaxPlayersInput = document.getElementById('game-max-players');
 const messages = [];
 const gameContainer = document.getElementById('game-container');
 
+//
+// Get user and append them to a lobby with credentials
+//
 const user = getUser()
   .then((user) => {
     console.log(user);
@@ -26,10 +33,16 @@ if (user === null) {
   window.location.href = 'http://localhost:3000/login';
 }
 
+//
+// initiate socket connect user
+//
 socket.on('user-connected', (user) => {
   appendConnectionMessage(`${user.username} connected`);
 });
 
+//
+// initiate socket and disconnect user
+//
 socket.on('user-disconnected', (user) => {
   try{
     console.log(user);
@@ -40,19 +53,27 @@ socket.on('user-disconnected', (user) => {
   }
 });
 
+//
+// initiate socket and message through chat
+//
 socket.on('chat-message', (data) => {
   const message_list = getLobbyMessageList();
   appendMessageList(message_list);
   console.log(message_list);
 });
 
+//
+// initiate socket and update game list
+//
 socket.on('update-game-list', () => {
   console.log('update-game-list');
   const game_list = getLobbyGameList();
   appendGameList(game_list);
 });
 
-
+//
+// Update and submit message list with Event Listener
+//
 messageForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const message = messageInput.value;
@@ -64,6 +85,9 @@ messageForm.addEventListener('submit', (e) => {
   messageInput.value = '';
 });
 
+//
+// Listen and submit all new gameForm request to 
+//
 gameForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const gameName = gameNameInput.value;
@@ -74,6 +98,9 @@ gameForm.addEventListener('submit', (e) => {
     return;
   }
 
+  //
+  // Monitor and validate users with auth
+  //
   user.then((user) => {
     const game = {
       gameName: gameName,
@@ -83,6 +110,9 @@ gameForm.addEventListener('submit', (e) => {
       gameHostId: user.id,
     };
 
+  //
+// initiate socket and createGame
+//
     const new_game_res = createGame(game)
       .then((new_game_res) => {
         socket.emit('game-created', game);
@@ -98,13 +128,17 @@ gameForm.addEventListener('submit', (e) => {
     }
   });
 });
-
+//
+// prepend messsae insisde of DIV element
+//
 async function appendConnectionMessage(message) {
   const messageElement = document.createElement('div');
   messageElement.innerText = message;
   messageContainer.prepend(messageElement);
 }
-
+//
+// get list of games and append to list
+//
 async function appendGameList(game_list) {
   Promise.resolve(game_list).then((game_list) => {
     console.log(game_list.length);
@@ -132,6 +166,9 @@ async function appendGameList(game_list) {
   });
 }
 
+//
+// get attributes of message list
+//
 async function appendMessageList(message_list) {
   Promise.resolve(message_list).then((message_list) => {
     console.log(message_list.length);
@@ -151,6 +188,9 @@ async function appendMessageList(message_list) {
   });
 }
 
+//
+// prompt user for password and authenticate for auth
+//
 async function promptGamePassword(game) {
   console.log('prompting password');
   const passwordForm = document.createElement('form');
@@ -180,7 +220,9 @@ async function promptGamePassword(game) {
   lobby_body_container.append(passwordForm);
 }
 
-
+//
+// auth user and get/return message list
+//
 async function getLobbyMessageList() {
   const message_list = await fetch('/api/lobby-message-list', {
     method: 'GET',
@@ -199,6 +241,9 @@ async function getLobbyMessageList() {
   return message_list;
 }
 
+//
+// get and return lobby game list
+//
 async function getLobbyGameList() {
   const game_list = await fetch('/api/lobby-game-list', {
     method: 'GET',
@@ -217,6 +262,9 @@ async function getLobbyGameList() {
   return game_list;
 }
 
+//
+// get and return user
+//
 async function getUser() {
   const user = await fetch('/api/user', {
     method: 'GET',

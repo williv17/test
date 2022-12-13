@@ -1,3 +1,6 @@
+//
+// find all messages from database
+//
 const ChatService = {
   async getLobbyMessageList(db) {
     return await db.MESSAGE.findAll({
@@ -8,6 +11,9 @@ const ChatService = {
       order: [['id', 'DESC']],
     });
   },
+  //
+  // get message list where gameID = gameID
+  //
   async getGameMessageList(db, gameId) {
   return await db.MESSAGE.findAll({
     where: {

@@ -1,3 +1,7 @@
+
+//
+// Module Dependencies
+//
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -6,6 +10,9 @@ const { engine } = require('express-handlebars');
 const mainRouter = require('./routes');
 const app = express();
 
+//
+// Require .env, load all uses for App's dependencies 
+//
 
 if (process.env.NODE_ENV === 'development') {
   require('dotenv').config();

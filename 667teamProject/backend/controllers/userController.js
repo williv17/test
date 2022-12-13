@@ -1,6 +1,12 @@
+//
+// Module Dependencies
+//
 const UserService = require('../services/user-service');
 const AuthService = require('../services/auth/auth-service.js');
 
+//
+// use user credentials to register user
+//
 const registerUser = async (req, res, next) => {
   const { password, username, email } = req.body;
   for (const field of ['email', 'username', 'password'])
@@ -51,6 +57,10 @@ const registerUser = async (req, res, next) => {
     .catch(next);
 };
 
+
+//
+// authenticate user
+//
 const loginUser = async (req, res, next) => {
   const { password, email } = req.body;
   for (const field of ['email', 'password'])
@@ -93,7 +103,9 @@ const loginUser = async (req, res, next) => {
     .catch(next);
 };
 
-
+//
+// use access tokens to find users
+//
 const getUserWithAccessToken = async (req, res, next) => {
   let access_token;
   if(req.cookies.jwt) {
@@ -119,7 +131,9 @@ const getUserWithAccessToken = async (req, res, next) => {
   }
 };
 
-
+//
+// export modules
+//
 module.exports = {
   registerUser,
   loginUser,

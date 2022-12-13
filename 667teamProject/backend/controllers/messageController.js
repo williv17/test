@@ -1,5 +1,12 @@
+
+//
+// Modoule Dependencies 
+//
 const ChatService = require('../services/chat-service');
 
+//
+// export message list
+//
 const getLobbyMessageList = async (request, response, next) => {
   const lobby_message_list = await ChatService.getLobbyMessageList(
     request.app.get('db')
@@ -18,6 +25,9 @@ const getLobbyMessageList = async (request, response, next) => {
   return lobby_message_list;
 };
 
+//
+// export modules
+//
 module.exports = {
   getLobbyMessageList,
 };

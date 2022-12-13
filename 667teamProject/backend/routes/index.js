@@ -1,6 +1,11 @@
+//
+// Module Dependencies
+//
 var express = require('express');
 const mainRouter = express.Router();
-
+//
+// Links to Navigation
+//
 const controllerRouter = require('../controllers/index.js');
 const rulesRouter = require('./rules.js');
 const homeRouter = require('./home.js');
@@ -19,5 +24,7 @@ mainRouter.use('/login', loginRouter);
 mainRouter.use('/register', registerRouter);
 mainRouter.use('/game', gameRouter);
 mainRouter.use('/lobby', lobbyRouter);
-
+//
+// Export Modules
+//
 module.exports = mainRouter;

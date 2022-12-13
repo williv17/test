@@ -1,5 +1,11 @@
+//
+// Module Dependencies
+//
 const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/;
 
+//
+// Validate key fields and restrictions towards registering user
+//
 async function handleRegister(event) {
   event.preventDefault();
   const form = document.querySelector('#register-form');

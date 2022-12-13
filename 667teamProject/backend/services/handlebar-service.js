@@ -1,7 +1,13 @@
+//
+// Module Dependencies
+//
 const fs = require('fs');
 const path = require('path');
 const Handlebars = require('handlebars');
 
+//
+// Store naviagation paths for partials
+//
 const partials = [
   {
     name: 'nav',
@@ -17,6 +23,9 @@ const partials = [
   },
 ];
 
+//
+// Push credentials and register partials
+//
 const registerPartial = (partialName, partialPath) => {
   partials.push({
     name: partialName,
@@ -24,6 +33,9 @@ const registerPartial = (partialName, partialPath) => {
   });
 };
 
+//
+// Iterate through all partials and render page
+//
 const renderPage = (response, templatePath, doc_body) => {
 
   const access_token = response.access_token;
@@ -41,6 +53,9 @@ const renderPage = (response, templatePath, doc_body) => {
     });
 
 
+  //
+  // Use access token to authentcate game variables to validate new template
+  //
   const template = Handlebars.compile(home_temp_str);
   const html = template({
     body: doc_body,
