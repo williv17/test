@@ -1,5 +1,10 @@
+
+//
+// Module Dependencies
+//
 require('dotenv').config();
 
+// Environment Variables 
 module.exports = {
   development: {
     url: process.env.DEV_DATABASE_URL,
