@@ -1,4 +1,4 @@
-const socket = io.connect('http://localhost:3000');
+const socket = io('https://test-1tex.onrender.com/');
 const messageForm = document.getElementById('chat-box');
 const messageInput = document.getElementById('message-input');
 const messageContainer = document.getElementById('message-container');
