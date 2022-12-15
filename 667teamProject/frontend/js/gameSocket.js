@@ -1,4 +1,4 @@
-let game_socket = io("localhost:3000");
+let game_socket = io("https://test-1tex.onrender.com/");
 const gameChatForm = document.getElementById('game-chat-form');
 const gameChatInput = document.getElementById('userInput');
 const game_id = window.location.pathname.split('/')[2];
