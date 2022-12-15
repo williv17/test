@@ -40,9 +40,9 @@ app.use(function (err, req, res, next) {
 });
 //app.set('view engine', 'pug');
 app.use("/", mainRouter);
-app.use("build/assets", express.static(path.join(__dirname, "../frontend/assets")));
-app.use("build/js", express.static(path.join(__dirname, "../frontend/js")));
-app.use('build/assets', express.static(path.join(__dirname, '../frontend/assets')));
+app.use("/assets", express.static(path.join(__dirname, "../frontend/assets")));
+app.use("/js", express.static(path.join(__dirname, "../frontend/js")));
+app.use('/assets', express.static(path.join(__dirname, '../frontend/assets')));
 app.use('/backend', express.static(path.join(__dirname, '../backend')));
 
 module.exports = app;
