@@ -44,6 +44,6 @@ app.use("/assets", express.static(path.join(__dirname, "../frontend/assets")));
 app.use("/js", express.static(path.join(__dirname, "../frontend/js")));
 app.use('/assets', express.static(path.join(__dirname, '../frontend/assets')));
 app.use('/backend', express.static(path.join(__dirname, '../backend')));
-app.user('/backend/images', express.static(path.join(__dirname, '../frontend/assets/images')));
+app.use('/backend/images', express.static(path.join(__dirname, '../frontend/assets/images')));
 
 module.exports = app;
