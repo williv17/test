@@ -214,7 +214,7 @@ game_socket.on('game-start', (deck) => {
           card_div.classList.add('card');
 
           const card_img = document.createElement('img');
-          card_img.src = "../assets/images/blue0.png"
+          card_img.src = "assets/images/blue0.png"
           card_img.classList.add('card-img');
 
           card_div.appendChild(card_img);
